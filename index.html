@@ -3,156 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tertiary Connect | All Students. Connected.</title>
+<title>Tertiary Connect | One Zimbabwe. All Students. Connected.</title>
+<meta name="theme-color" content="#0a0a0a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.png">
 <style>
-  body{margin:0;font-family:Inter,system-ui,sans-serif;background:#0a0a0a;color:white}
-  header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222}
-  .logo{font-weight:900;font-size:22px}.logo span{color:#1DB954}
-  .hero{padding:50px 6%;text-align:center;background:radial-gradient(circle at top,#1a3d1a,#0a0a0a)}
-  .hero h1{font-size:40px;line-height:1.1;margin:15px 0}
-  .badge{background:#1DB954;color:black;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700}
-  .btn{display:inline-block;padding:14px 28px;border-radius:999px;text-decoration:none;font-weight:700;margin:8px}
-  .btn-green{background:#1DB954;color:black}.btn-white{background:white;color:black}.btn-gold{background:#FFD700;color:black}
-  .founder{margin:20px 6%;background:#111;border:1px solid #1DB954;border-radius:18px;padding:20px;display:flex;gap:16px;align-items:center}
-  .avatar{width:60px;height:60px;background:#FFD700;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:black;flex-shrink:0}
-  .grid{padding:30px 6%;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-  .card{background:#111;border:1px solid #222;border-radius:18px;padding:18px}
-  .card.featured{border:2px solid #1DB954;background:#0f1f0f}
-  .form-box{margin:30px 6%;background:#111;border:1px solid #222;border-radius:20px;padding:30px;max-width:600px;margin-left:auto;margin-right:auto}
-  .form-box input,.form-box select,.form-box textarea{width:100%;padding:15px;margin:8px 0;border-radius:12px;border:1px solid #333;background:#0a0a0a;color:white;box-sizing:border-box;font-size:15px}
-  .form-box label{font-size:13px;color:#aaa}
-  .form-box button{width:100%;padding:16px;background:#1DB954;border:none;border-radius:999px;font-weight:800;font-size:16px;cursor:pointer;margin-top:10px}
-  .confess-card{background:#111;border:1px solid #222;border-radius:18px;padding:16px}
-  .wall{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:12px;padding:0 15px}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:#0a0a0a;color:#fff}
+header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:22px}.logo span{color:#1DB954}
+.hero{padding:50px 6%;text-align:center}
+.hero h1{font-size:40px;line-height:1.1;margin:10px 0}
+.badge{background:#1DB954;color:#000;padding:6px 14px;border-radius:20px;font-weight:700;font-size:13px}
+.btn{display:inline-block;padding:14px 26px;border-radius:30px;text-decoration:none;font-weight:800;margin:8px}
+.btn-green{background:#1DB954;color:#000}.btn-white{background:#fff;color:#000}
+.founder{margin:30px 6%;background:#111;border:1px solid #222;border-radius:16px;padding:20px;display:flex;gap:14px;align-items:center;text-align:left}
+.avatar{width:60px;height:60px;border-radius:50%;background:#1DB954;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#000;flex-shrink:0}
+.grid{padding:20px 6%;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:#111;border:1px solid #222;border-radius:14px;padding:18px}
+.card h3{margin:0 0 6px}.card p{color:#aaa;font-size:14px;margin:0}
+.form-box{margin:30px 6%;background:#111;border-radius:16px;padding:22px;text-align:center}
+input,select{width:100%;padding:13px;margin:8px 0;border-radius:10px;border:1px solid #333;background:#000;color:#fff;box-sizing:border-box}
+footer{padding:30px 6%;text-align:center;color:#777;font-size:13px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.hero h1{font-size:32px}}
 </style>
 </head>
 <body>
-
-<header><div class="logo">TERTIARY<span>CONNECT</span></div><div style="font-size:13px;color:#888">🇿🇼 Zimbabwe</div></header>
-
+<header><div class="logo">TERTIARY<span>CONNECT</span></div><a href="https://wa.me/263786361179?text=Hi%20Tertiary%20Connect!%20I%20want%20to%20join" style="color:#fff;text-decoration:none;font-weight:700">Join →</a></header>
 <section class="hero">
-  <span class="badge">BUILT FOR ALL ZIMBABWE</span>
-  <h1>One Zimbabwe.<br>All Students. Connected.</h1>
-  <p style="color:#aaa">Find your people. Share confessions. Stay anonymous.</p>
-  <div style="margin-top:15px"><span style="background:#111;border:1px solid #1DB954;color:#1DB954;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700">🔒 Privacy Promise: Your number is NEVER shown publicly</span></div>
-  <div style="margin-top:20px">
-    <a class="btn btn-green" href="#join">Create Your Alias</a>
-    <a class="btn btn-white" href="#schools">Browse Schools</a>
-    <a class="btn btn-gold" href="#confessions">🤫 Confessions</a>
-  </div>
+<span class="badge">● LIVE IN ZIMBABWE • 2026</span>
+<h1>One Zimbabwe.<br>All Students.<br>Connected.</h1>
+<p style="color:#bbb;max-width:520px;margin:0 auto">Find your university, your course, your people, your hustle. All tertiary institutions in one place.</p>
+<br>
+<a class="btn btn-green" href="https://wa.me/263786361179?text=Hi%20Tertiary%20Connect!%20I%20want%20to%20join">Join on WhatsApp →</a>
+<a class="btn btn-white" href="#unis">Explore ↓</a>
+<p style="font-size:13px;color:#888">Free to join • Made in Zimbabwe</p>
 </section>
-
-<!-- FOUNDER - ANONYMOUS -->
 <div class="founder">
-  <div class="avatar">S</div>
-  <div>
-    <b style="font-size:19px">⚡ snacs</b> <span style="background:#1DB954;color:black;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800">FOUNDER</span><br>
-    <span style="color:#aaa;font-size:14px">Founder of Tertiary Connect. Building a safe place for all students in Zimbabwe.</span>
-  </div>
+<div class="avatar">TS</div>
+<div><b>Thizza Snacs - Founder</b><br><span style="color:#aaa;font-size:14px">"I built this because students in Zim deserve one place to connect. We move as one."</span><br><a href="https://wa.me/263786361179" style="color:#1DB954;font-weight:700;text-decoration:none">Chat with Thizza Snacs →</a></div>
 </div>
-
-<!-- SCHOOLS -->
-<section id="schools" class="grid">
-  <div class="card featured"><h3>⭐ Mutare Polytechnic</h3><small>189 members</small></div>
-  <div class="card"><h3>UZ</h3><small>University of Zimbabwe - 412 members</small></div>
-  <div class="card"><h3>MSU</h3><small>Midlands State University - 389 members</small></div>
-  <div class="card"><h3>NUST</h3><small>Bulawayo - 310 members</small></div>
-  <div class="card"><h3>Harare Poly</h3><small>Harare - 201 members</small></div>
-  <div class="card"><h3>CUT</h3><small>Chinhoyi - 245 members</small></div>
-  <div class="card"><h3>GZU</h3><small>Masvingo - 156 members</small></div>
-  <div class="card"><h3>HIT</h3><small>Harare Institute - 178 members</small></div>
+<section class="grid" id="unis">
+<div class="card"><h3>🎓 Institutions</h3><p>Universities • Colleges • Polytechnics</p></div>
+<div class="card"><h3>📚 Courses & Notes</h3><p>Past papers, notes, assignments help</p></div>
+<div class="card"><h3>💼 Hustles & Jobs</h3><p>Internships, part-time, student gigs</p></div>
+<div class="card"><h3>🏠 Accommodation</h3><p>Verified hostels & rooms near campus</p></div>
 </section>
-
-<!-- JOIN FORM - ALIAS SYSTEM -->
-<section id="join" class="form-box">
-  <h2 style="text-align:center;margin:0">Create Your Alias & Join</h2>
-  <p style="text-align:center;color:#888;font-size:14px">Your alias is what everyone sees. Be creative!</p>
-  <label>Create Your Alias *This is your public name*</label>
-  <input id="alias" placeholder="e.g. VoltageBoy, MutareLion, GhostEngineer">
-  <p style="color:#FFD700;font-size:12px;margin:0">⚠️ Don't use your real name in your alias. Keep it anonymous.</p>
-  <label style="margin-top:15px;display:block">Your School</label>
-  <select id="school2"><option>Mutare Polytechnic</option><option>Harare Polytechnic</option><option>Bulawayo Polytechnic</option><option>University of Zimbabwe (UZ)</option><option>Midlands State University (MSU)</option><option>NUST</option><option>CUT</option><option>GZU</option><option>HIT</option><option>Other</option></select>
-  <label>Your Course</label>
-  <select id="course2"><option>Electrical Engineering</option><option>Mechanical Engineering</option><option>IT / Computer Science</option><option>Business / Accounting</option><option>Education</option><option>Medicine / Nursing</option><option>Law</option><option>Other</option></select>
-  <label>Year</label>
-  <select id="year"><option>Year 1</option><option>Year 2</option><option>Year 3</option><option>Year 4</option></select>
-  <label>What do you need?</label>
-  <select id="need"><option>Study Buddy</option><option>Notes / Past Papers</option><option>Friends</option><option>Tutor / Help</option></select>
-  <label>Your Real Name (PRIVATE - Only Founder sees this)</label>
-  <input id="realname" placeholder="Your real name - NEVER shown publicly">
-  <label>Your WhatsApp (PRIVATE - Only Founder sees this)</label>
-  <input id="phone2" placeholder="e.g. 0771234567">
-  <button onclick="joinWithAlias()">Create Alias & Join →</button>
-  <p style="text-align:center;color:#555;font-size:12px">🔒 Public = Alias only. Private = Real name + Number to Founder only.</p>
-</section>
-
-<!-- CONFESSIONS -->
-<section id="confessions" style="padding:20px 0 40px">
-  <h2 style="text-align:center">🤫 Anonymous Confessions</h2>
-  <p style="text-align:center;color:#888;font-size:14px">No names. No judgement. Just real student life.</p>
-
-  <div class="form-box" style="margin-top:10px">
-    <label>Your Alias</label>
-    <input id="confessAlias" placeholder="Enter your alias e.g. VoltageBoy">
-    <label>Your Confession (Anonymous)</label>
-    <textarea id="confessText2" rows="3" placeholder="Write your confession..."></textarea>
-    <label>School Tag (only tag shown)</label>
-    <select id="confessSchool"><option>Mutare Polytechnic</option><option>UZ</option><option>MSU</option><option>NUST</option><option>Harare Poly</option><option>Other</option></select>
-    <button onclick="sendConfessionAlias()" style="background:#FFD700;color:black">Post as Alias →</button>
-    <p style="text-align:center;color:#FFD700;font-size:13px;font-weight:700">🤫 Your confession is 100% anonymous. Even your number is hidden from the wall.</p>
-    <p style="text-align:center;color:#555;font-size:12px">⚠️ No real names, no bullying, no hate. Posts are reviewed by snacs before posting.</p>
-  </div>
-
-  <!-- WALL -->
-  <div class="wall">
-    <div class="confess-card" style="border:2px solid #FFD700">
-      <b style="color:#FFD700">⚡ snacs • Founder</b> <span style="background:#FFD700;color:black;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:800">PINNED</span>
-      <p>Welcome to Tertiary Connect. I'm snacs. Create your alias, post your confession, find your people. No real names, no numbers shown. Let's build this together. 🇿🇼</p>
-      <span style="color:#888;font-size:13px">❤️ 234 • 💬 67 • 🚩 Report</span>
-    </div>
-    <div class="confess-card">
-      <b style="color:#FFD700">⚡ VoltageBoy • Mutare Polytechnic</b>
-      <p>I love my course but sometimes I wonder if I chose the right one. Anyone else feel like that?</p>
-      <span style="color:#888;font-size:13px">❤️ 42 • 💬 12 • 🚩 Report</span>
-    </div>
-    <div class="confess-card">
-      <b style="color:#FFD700">🦁 MutareLion • MSU</b>
-      <p>I work part-time and study at night. It's hard but I will graduate. Don't give up.</p>
-      <span style="color:#888;font-size:13px">❤️ 156 • 💬 21 • 🚩 Report</span>
-    </div>
-    <div class="confess-card">
-      <b style="color:#FFD700">👻 GhostEngineer • UZ</b>
-      <p>I have a crush on someone in my class but I'm too shy to say hi. What should I do?</p>
-      <span style="color:#888;font-size:13px">❤️ 89 • 💬 34 • 🚩 Report</span>
-    </div>
-  </div>
-</section>
-
-<footer style="text-align:center;padding:30px;color:#555;font-size:13px;border-top:1px solid #222">Tertiary Connect • Founded by snacs • 🇿🇼 For All Zimbabwe Students<br>Privacy: Aliases only. Numbers never shown publicly.</footer>
-
+<div class="form-box">
+<h2>Join The Waitlist</h2>
+<p style="color:#aaa">Be first when the app launches</p>
+<form onsubmit="join(event)">
+<input id="name" placeholder="Your Nickname / First Name" required>
+<input id="school" placeholder="Your Institution" required>
+<select id="year"><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option><option>Postgrad</option></select>
+<input id="phone" placeholder="WhatsApp Number" required>
+<button class="btn btn-green" style="border:none;width:100%;cursor:pointer" type="submit">Join Now on WhatsApp →</button>
+</form>
+<p id="msg" style="color:#1DB954;font-weight:700"></p>
+</div>
+<footer>© 2026 Tertiary Connect ZW • Made in Zimbabwe<br>Contact: <a href="https://wa.me/263786361179" style="color:#1DB954">WhatsApp Us</a></footer>
 <script>
-function joinWithAlias(){
-  let alias = document.getElementById('alias').value;
-  let school = document.getElementById('school2').value;
-  let course = document.getElementById('course2').value;
-  let year = document.getElementById('year').value;
-  let need = document.getElementById('need').value;
-  let realname = document.getElementById('realname').value;
-  let phone = document.getElementById('phone2').value;
-  if(!alias || !phone){ alert('Please create an alias and add WhatsApp'); return; }
-  let msg = `NEW MEMBER - ALIAS SYSTEM:%0A%0AAlias (PUBLIC): ${alias}%0ASchool: ${school}%0ACourse: ${course}%0AYear: ${year}%0ANeed: ${need}%0AReal Name (PRIVATE): ${realname}%0AWhatsApp (PRIVATE): ${phone}`;
-  window.open(`https://wa.me/263786361179?text=${msg}`, '_blank');
+function join(e){e.preventDefault();
+let n=document.getElementById('name').value;
+let s=document.getElementById('school').value;
+let y=document.getElementById('year').value;
+let p=document.getElementById('phone').value;
+let msg="Hi Tertiary Connect! I'm "+n+" from "+s+" ("+y+"). My number is "+p+". Add me!";
+window.open("https://wa.me/263786361179?text="+encodeURIComponent(msg),"_blank");
+document.getElementById('msg').innerText="✅ Opening WhatsApp... See you inside!";
 }
-function sendConfessionAlias(){
-  let alias = document.getElementById('confessAlias').value;
-  let text = document.getElementById('confessText2').value;
-  let school = document.getElementById('confessSchool').value;
-  if(!alias || !text || text.length < 10){ alert('Add your alias and a longer confession'); return; }
-  let msg = `NEW CONFESSION FOR APPROVAL:%0A%0AAlias: ${alias}%0ASchool Tag: ${school}%0AConfession: ${text}`;
-  window.open(`https://wa.me/263786361179?text=${msg}`, '_blank');
-  alert('Sent to snacs for approval. If approved, it will appear on the wall.');
-  document.getElementById('confessText2').value = '';
-}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
 </script>
 </body>
 </html>
