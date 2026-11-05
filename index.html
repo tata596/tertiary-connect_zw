@@ -10,20 +10,24 @@ body{margin:0;background:#f3f0ff;padding:15px}
 .card{background:white;border-radius:15px;padding:20px;max-width:450px;margin:20px auto;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
 h1{text-align:center;color:#6d28d9}
 h2{color:#6d28d9}
-input,select{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:10px;font-size:16px}
+input,select,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:10px;font-size:16px}
 button{width:100%;padding:13px;background:#6d28d9;color:white;border:none;border-radius:10px;font-size:16px;font-weight:bold;margin-top:10px;cursor:pointer}
 button.sec{background:white;color:#6d28d9;border:2px solid #6d28d9}
+button.pink{background:#ec4899}
+button.red{background:#ef4444}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .item{background:#f9f5ff;padding:15px;border-radius:12px;text-align:center;cursor:pointer}
 .hidden{display:none}
 .post{background:#f9f5ff;padding:12px;border-radius:10px;margin:10px 0}
+.confess{background:#fdf2f8;padding:12px;border-radius:10px;margin:10px 0;border-left:4px solid #ec4899}
+.date-card{background:#fff1f2;padding:15px;border-radius:12px;margin:10px 0;text-align:center;border:2px dashed #ec4899}
 </style>
 </head>
 <body>
 
 <div id="signup" class="card">
 <h1>🎓 Tertiary Connect</h1>
-<p style="text-align:center">Connect • Buy • Sell • Chat - For Zim Students</p>
+<p style="text-align:center">Connect • Buy • Sell • Confess • Date - For Zim Students</p>
 <h2>Create Account</h2>
 <input id="name" placeholder="Full Name - e.g Tata">
 <input id="school" placeholder="University - e.g MSU">
@@ -38,8 +42,8 @@ button.sec{background:white;color:#6d28d9;border:2px solid #6d28d9}
 <div class="grid">
 <div class="item" onclick="showSection('market')">🛒<br><b>Marketplace</b></div>
 <div class="item" onclick="showSection('chat')">💬<br><b>Chat</b></div>
-<div class="item" onclick="showSection('notes')">📚<br><b>Notes</b></div>
-<div class="item" onclick="showSection('events')">🎉<br><b>Events</b></div>
+<div class="item" onclick="showSection('confessSec')">🤫<br><b>Confessions</b></div>
+<div class="item" onclick="showSection('dateSec')">❤️<br><b>Blind Date</b></div>
 </div>
 
 <div id="market">
@@ -57,15 +61,27 @@ button.sec{background:white;color:#6d28d9;border:2px solid #6d28d9}
 <div id="chatList"></div>
 </div>
 
-<div id="notes" class="hidden">
-<h2>Notes & Past Papers</h2>
-<div class="post">📄 MSU Accounting 101 Notes - Free</div>
-<div class="post">📄 UZ Law Past Papers 2024</div>
-<div class="post">📄 NUST Engineering Maths</div>
+<div id="confessSec" class="hidden">
+<h2>🤫 Anonymous Confessions</h2>
+<p style="font-size:13px;color:#666">100% Anonymous - No name shown!</p>
+<textarea id="confessMsg" placeholder="Confess something... e.g I have a crush on someone in my class 👀" rows="3"></textarea>
+<button class="pink" onclick="sendConfess()">Post Anonymously 🤫</button>
+<div id="confessList"></div>
 </div>
 
-<div id="events" class="hidden">
-<h2>Events</h2>
+<div id="dateSec" class="hidden">
+<h2>❤️ Blind Date</h2>
+<p style="font-size:13px;color:#666">Find your campus crush - No photos, just vibes!</p>
+<input id="dateName" placeholder="Your Nickname">
+<select id="dateGender"><option>I am Male</option><option>I am Female</option></select>
+<select id="dateLooking"><option>Looking for Female</option><option>Looking for Male</option><option>Looking for Anyone</option></select>
+<input id="dateInterest" placeholder="Your vibe? e.g Amapiano, Gym, Study buddy">
+<button class="red" onclick="joinDate()">Find My Blind Date ❤️</button>
+<div id="dateList"></div>
+</div>
+
+<div style="margin-top:20px">
+<h2>🎉 Events</h2>
 <div class="post">🎉 MSU Cultural Night - Fri 7PM</div>
 <div class="post">⚽ UZ vs NUST Football Derby - Sat</div>
 </div>
@@ -76,6 +92,8 @@ button.sec{background:white;color:#6d28d9;border:2px solid #6d28d9}
 <script>
 let items = JSON.parse(localStorage.getItem('tc_items')||'[]');
 let chats = JSON.parse(localStorage.getItem('tc_chats')||'[]');
+let confesses = JSON.parse(localStorage.getItem('tc_confess')||'[]');
+let dates = JSON.parse(localStorage.getItem('tc_dates')||'[]');
 
 function createAccount(){
   let n = document.getElementById('name').value.trim();
@@ -92,11 +110,11 @@ function showMain(){
     document.getElementById('main').classList.remove('hidden');
     document.getElementById('welcomeName').textContent = u.name;
     document.getElementById('welcomeSchool').textContent = u.school;
-    renderItems(); renderChats();
+    renderItems(); renderChats(); renderConfess(); renderDates();
   }
 }
 function showSection(id){
-  ['market','chat','notes','events'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+  ['market','chat','confessSec','dateSec'].forEach(x=>document.getElementById(x).classList.add('hidden'));
   document.getElementById(id).classList.remove('hidden');
 }
 function addItem(){
@@ -127,10 +145,40 @@ function renderChats(){
   chats.forEach(c=>{ h += '<div class="post"><b>'+c.user+':</b> '+c.msg+'</div>'; });
   document.getElementById('chatList').innerHTML = h;
 }
-function logout(){
-  localStorage.removeItem('tc_user');
-  location.reload();
+function sendConfess(){
+  let m = document.getElementById('confessMsg').value.trim();
+  if(!m){ alert('Type your confession first 🤫'); return; }
+  confesses.unshift({msg:m, likes:0});
+  localStorage.setItem('tc_confess', JSON.stringify(confesses));
+  document.getElementById('confessMsg').value='';
+  renderConfess(); alert('Posted Anonymously! 🤫');
 }
+function renderConfess(){
+  let h = confesses.length ? '' : '<p>No confessions yet. Be brave, post first!</p>';
+  confesses.forEach((c,i)=>{ h += '<div class="confess">🤫 <b>Anonymous:</b> '+c.msg+'<br><button style="width:auto;padding:5px 10px;background:#ec4899" onclick="likeConfess('+i+')">❤️ '+c.likes+'</button></div>'; });
+  document.getElementById('confessList').innerHTML = h;
+}
+function likeConfess(i){
+  confesses[i].likes++;
+  localStorage.setItem('tc_confess', JSON.stringify(confesses));
+  renderConfess();
+}
+function joinDate(){
+  let n = document.getElementById('dateName').value.trim();
+  let g = document.getElementById('dateGender').value;
+  let l = document.getElementById('dateLooking').value;
+  let v = document.getElementById('dateInterest').value.trim();
+  if(!n){ alert('Enter nickname for Blind Date'); return; }
+  dates.unshift({name:n, gender:g, looking:l, vibe:v||'Chill'});
+  localStorage.setItem('tc_dates', JSON.stringify(dates));
+  renderDates(); alert('You joined Blind Date! ❤️ Check below for matches!');
+}
+function renderDates(){
+  let h = dates.length ? '<h3>People Looking Now:</h3>' : '<p>No one joined yet. Be first!</p>';
+  dates.forEach(d=>{ h += '<div class="date-card">❤️ <b>'+d.name+'</b><br>'+d.gender+' • '+d.looking+'<br>Vibe: '+d.vibe+'<br><button style="width:auto;padding:6px 12px;background:#ef4444" onclick="alert(\'Match request sent to '+d.name+'! ❤️\')">Say Hi ❤️</button></div>'; });
+  document.getElementById('dateList').innerHTML = h;
+}
+function logout(){ localStorage.removeItem('tc_user'); location.reload(); }
 showMain();
 </script>
 </body>
