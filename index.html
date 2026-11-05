@@ -1,56 +1,85 @@
 <!DOCTYPE html>
-<html><head><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>campusconfess</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tertiary-connect_zw</title>
 <style>
-body{background:#0F0F1A;color:#fff;font-family:Arial;margin:0;padding:14px}
-.card{background:#1A1A2E;padding:16px;border-radius:14px;text-align:center}
-input,select{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid #333;background:#222;color:#fff;box-sizing:border-box}
-.btn{width:100%;padding:12px;border:none;border-radius:999px;font-weight:900;cursor:pointer;background:#A855F7;color:#fff;margin-top:6px}
-.hidden{display:none!important}
-</style></head><body>
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+body { background:#0F0F1A; color:#fff; min-height:100vh; display:flex; justify-content:center; align-items:flex-start; padding:20px 15px; }
+.container { width:100%; max-width:420px; }
+.card { background:#1A1A2E; border-radius:20px; padding:25px 20px; margin-top:20px; }
+h2 { text-align:center; font-size:28px; font-weight:800; }
+.subtitle { text-align:center; color:#aaa; margin:10px 0 22px; font-size:17px; font-weight:700; }
+input, select { width:100%; background:#1f1f2e; border:1px solid #2a2a3d; color:white; padding:14px 15px; border-radius:12px; font-size:15px; margin-bottom:12px; outline:none; }
+input::placeholder { color:#7a7a8a; }
+select { appearance:none; color:#c0c0d0; }
+select option { background:#1f1f2e; }
+.btn { width:100%; background:linear-gradient(90deg,#a855f7,#c084fc); color:white; border:none; padding:14px; border-radius:30px; font-size:16px; font-weight:700; cursor:pointer; }
+.note { text-align:center; color:#7a7a8a; font-size:13px; margin-top:15px; line-height:1.5; }
+.hidden { display:none !important; }
+.success-box { text-align:center; padding:10px; }
+.success-box p { color:#a0a0b0; line-height:1.6; font-size:14px; }
+.link-btn { display:block; text-align:center; background:#1f1f2e; color:white; text-decoration:none; padding:12px; border-radius:30px; margin-top:15px; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card" id="registerCard">
+    <h2>tertiary-connect_zw</h2>
+    <p class="subtitle" id="anonTitle">Create Account-@anonymous #48383</p>
 
-<div id="authBox" class="card">
-<h2>campusconfess</h2>
-<p style="color:#aaa">Create Account - Zimbabwe 🇿🇼</p>
-<input id="regName" placeholder="Your Name e.g. Shy Sparrow">
-<input id="regSchool" placeholder="School e.g. Mutare Poly">
-<select id="regGender">
-<option value="">Select Gender * REQUIRED</option>
-<option value="♀️ Female">♀️ Female</option>
-<option value="♂️ Male">♂️ Male</option>
-</select>
-<button class="btn" onclick="createAccount()">Create My Account ✅</button>
-</div>
+    <input type="text" id="regName" placeholder="Your Name e.g @anonymous3737">
+    <input type="text" id="regSchool" placeholder="School e.g your institution">
 
-<div id="profileBox" class="card hidden">
-<p style="font-size:50px;margin:0">👤</p>
-<h2 id="pName">-</h2>
-<p><span style="color:#22C55E">🟢 Online now</span></p>
-<p id="pLastSeen" style="color:#aaa;font-size:13px">Last seen: Just now</p>
-<p id="pGender"></p>
-<p id="pSchool"></p>
-<button class="btn" style="background:#333" onclick="logout()">Log Out</button>
+    <select id="regGender">
+      <option value="">Select Gender * REQUIRED</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other / Prefer not to say</option>
+    </select>
+
+    <button class="btn" onclick="createAccount()">Create My Account ✅</button>
+    <p class="note">Anonymous • Safe • For Tertiary Students in Zimbabwe<br>Your username is hidden from everyone.</p>
+  </div>
+
+  <div class="card hidden" id="successCard">
+    <div class="success-box">
+      <h3>Welcome! 🎉</h3>
+      <p id="welcomeText"></p>
+      <p style="margin-top:10px; color:#a855f7; font-weight:700;">Your account is ready!</p>
+      <a href="#" class="link-btn" onclick="goToChats()">Continue →</a>
+    </div>
+  </div>
 </div>
 
 <script>
-let me=JSON.parse(localStorage.getItem('cc_user')||'null');
+const randomNum = Math.floor(10000 + Math.random()*89999);
+document.getElementById('anonTitle').textContent = 'Create Account-@anonymous #' + randomNum;
+
 function createAccount(){
-let n=document.getElementById('regName').value.trim();
-let s=document.getElementById('regSchool').value.trim();
-let g=document.getElementById('regGender').value;
-if(!n||!s||!g){alert('Fill Name + School + Gender! Gender is required!');return}
-me={name:n,school:s,gender:g,lastSeen:"Just now"};
-localStorage.setItem('cc_user',JSON.stringify(me));
-showProfile();
+  const name = document.getElementById('regName').value.trim();
+  const school = document.getElementById('regSchool').value.trim();
+  const gender = document.getElementById('regGender').value;
+  if(!name){ alert('Please enter Your Name'); return; }
+  if(!school){ alert('Please enter School'); return; }
+  if(!gender){ alert('Please Select Gender - REQUIRED'); return; }
+  const user = { username: name, institution: school, gender: gender, anonId: randomNum, created: new Date().toISOString() };
+  localStorage.setItem('tc_user', JSON.stringify(user));
+  document.getElementById('registerCard').classList.add('hidden');
+  document.getElementById('successCard').classList.remove('hidden');
+  document.getElementById('welcomeText').innerHTML = 'You are <b style="color:white">@anonymous #'+randomNum+'</b><br>Your Name: <b style="color:white">'+name+'</b><br>School: <b style="color:white">'+school+'</b><br>Gender: <b style="color:white">'+gender+'</b>';
 }
-function showProfile(){
-document.getElementById('authBox').classList.add('hidden');
-document.getElementById('profileBox').classList.remove('hidden');
-document.getElementById('pName').innerText=me.name;
-document.getElementById('pGender').innerText='Gender: '+me.gender;
-document.getElementById('pSchool').innerText='🏫 '+me.school;
-document.getElementById('pLastSeen').innerText='Last seen: '+me.lastSeen+' • 🟢 Online';
+function goToChats(){ alert('CODE 2 - Chats coming next!'); }
+window.onload = function(){
+  const saved = localStorage.getItem('tc_user');
+  if(saved){
+    const u = JSON.parse(saved);
+    document.getElementById('registerCard').classList.add('hidden');
+    document.getElementById('successCard').classList.remove('hidden');
+    document.getElementById('welcomeText').innerHTML = 'Welcome back <b style="color:white">@anonymous #'+(u.anonId||48383)+'</b><br>Your Name: <b style="color:white">'+u.username+'</b><br>School: <b style="color:white">'+u.institution+'</b>';
+  }
 }
-function logout(){localStorage.removeItem('cc_user');location.reload()}
-if(me) showProfile();
-</script></body></html>
+</script>
+</body>
+</html>
