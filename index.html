@@ -6,177 +6,180 @@
 <title>Tertiary Connect ZW</title>
 <style>
 *{box-sizing:border-box;font-family:Arial,sans-serif}
-body{margin:0;background:#f3f0ff;padding:15px}
-.card{background:white;border-radius:15px;padding:20px;max-width:450px;margin:20px auto;box-shadow:0 4px 15px rgba(0,0,0,0.1)}
-h1{text-align:center;color:#6d28d9}
-h2{color:#6d28d9}
-input,select,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:10px;font-size:16px}
-button{width:100%;padding:13px;background:#6d28d9;color:white;border:none;border-radius:10px;font-size:16px;font-weight:bold;margin-top:10px;cursor:pointer}
-button.sec{background:white;color:#6d28d9;border:2px solid #6d28d9}
-button.pink{background:#ec4899}
-button.red{background:#ef4444}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.item{background:#f9f5ff;padding:15px;border-radius:12px;text-align:center;cursor:pointer}
+body{margin:0;background:#fff;color:#000}
+.top{position:sticky;top:0;background:rgba(255,255,255,0.95);border-bottom:1px solid #eff3f4;z-index:10}
+.top-inner{max-width:600px;margin:auto;display:flex;justify-content:space-between;padding:12px 15px;align-items:center}
+.logo{font-size:28px;font-weight:900}
+.tabs{max-width:600px;margin:auto;display:flex;border-bottom:1px solid #eff3f4}
+.tab{flex:1;text-align:center;padding:14px;font-weight:bold;cursor:pointer}
+.tab.active{border-bottom:4px solid #000}
+.wrap{max-width:600px;margin:auto;padding-bottom:90px}
+.card{padding:15px;border-bottom:1px solid #eff3f4}
+input,select,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #cfd9de;border-radius:20px;font-size:15px;outline:none}
+button{padding:10px 20px;background:#000;color:#fff;border:none;border-radius:30px;font-weight:bold;cursor:pointer}
+button.small{padding:6px 14px;font-size:13px}
+button.sec{background:#fff;color:#000;border:1px solid #cfd9de}
+.avatar{width:48px;height:48px;border-radius:50%;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:20px;flex-shrink:0;margin-right:10px;object-fit:cover}
+.avatar-big{width:80px;height:80px;font-size:32px}
+.name{font-weight:bold}
+.handle{color:#536471;font-size:13px}
+.actions{display:flex;gap:16px;margin-top:12px;color:#536471;font-size:14px;flex-wrap:wrap}
+.actions span{cursor:pointer}
+.reactions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.react-btn{border:1px solid #eff3f4;background:#f7f9f9;padding:6px 10px;border-radius:20px;cursor:pointer;font-size:14px;color:#000}
+.react-btn.active{background:#000;color:#fff}
+.react-summary{background:#f7f9f9;padding:6px 10px;border-radius:20px;display:inline-block;font-size:13px;margin-top:8px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #eff3f4;display:flex;max-width:600px;margin:auto;z-index:20}
+.nav div{flex:1;text-align:center;padding:14px;font-size:22px;cursor:pointer}
+.nav div.active{background:#f7f9f9}
 .hidden{display:none}
-.post{background:#f9f5ff;padding:12px;border-radius:10px;margin:10px 0}
-.confess{background:#fdf2f8;padding:12px;border-radius:10px;margin:10px 0;border-left:4px solid #ec4899}
-.date-card{background:#fff1f2;padding:15px;border-radius:12px;margin:10px 0;text-align:center;border:2px dashed #ec4899}
+.pill{display:inline-block;background:#eff3f4;padding:5px 12px;border-radius:20px;font-size:13px;margin:3px;cursor:pointer}
+.comment-box{display:flex;gap:8px;margin-top:10px}
+.comment-box input{margin:0}
+.comment{margin-top:8px;margin-left:58px;background:#f7f9f9;padding:8px 12px;border-radius:15px;font-size:14px}
+.stories{display:flex;gap:12px;overflow-x:auto;padding:12px 15px;border-bottom:1px solid #eff3f4}
+.story{flex-shrink:0;text-align:center;cursor:pointer;width:70px}
+.story-circle{width:62px;height:62px;border-radius:50%;border:3px solid #f91880;padding:2px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;overflow:hidden}
+.story-circle img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.post-photo{width:100%;border-radius:15px;margin-top:10px;max-height:320px;object-fit:cover}
+.trend{background:#f7f9f9;padding:12px;border-radius:15px;margin:8px 0}
+.poll-opt{border:1px solid #cfd9de;border-radius:20px;padding:10px;margin:6px 0;cursor:pointer;position:relative;overflow:hidden}
+.poll-bar{position:absolute;left:0;top:0;bottom:0;background:#d3e9ff;z-index:0}
+.poll-text{position:relative;z-index:1;font-weight:bold}
+.dm-msg{padding:8px 12px;border-radius:18px;margin:6px 0;max-width:80%;font-size:14px}
+.dm-me{background:#000;color:#fff;margin-left:auto;text-align:right}
+.dm-them{background:#f7f9f9}
+.notif{padding:12px;border-bottom:1px solid #eff3f4}
 </style>
 </head>
 <body>
 
-<div id="signup" class="card">
-<h1>🎓 Tertiary Connect</h1>
-<p style="text-align:center">Connect • Buy • Sell • Confess • Date - For Zim Students</p>
-<h2>Create Account</h2>
-<input id="name" placeholder="Full Name - e.g Tata">
-<input id="school" placeholder="University - e.g MSU">
+<div id="signup" class="wrap" style="padding:30px 15px">
+<div style="text-align:center;font-size:60px;font-weight:900">𝕏</div>
+<h1 style="text-align:center;font-size:32px">Tertiary Connect ZW</h1>
+<p style="text-align:center;color:#536471">Stories • Posts • Polls • DM • Confess • Blind Date</p>
+<input id="name" placeholder="Your Name - e.g Tata">
+<input id="school" placeholder="University - e.g MSU, UZ, NUST">
 <select id="gender"><option>Male</option><option>Female</option><option>Other</option></select>
-<button onclick="createAccount()">Create My Account ✅</button>
-<p style="text-align:center;font-size:13px;color:#666">Join 1000+ students in ZW</p>
+<input id="photoUrl" placeholder="Your Photo URL (optional) - paste image link">
+<button style="width:100%;padding:15px" onclick="createAccount()">Create Account</button>
+<p style="text-align:center;font-size:12px;color:#999">Tip: Use a photo from Google Images link for real profile pic</p>
 </div>
 
-<div id="main" class="card hidden">
-<h1>Welcome <span id="welcomeName"></span> 🎉</h1>
-<p style="text-align:center" id="welcomeSchool"></p>
-<div class="grid">
-<div class="item" onclick="showSection('market')">🛒<br><b>Marketplace</b></div>
-<div class="item" onclick="showSection('chat')">💬<br><b>Chat</b></div>
-<div class="item" onclick="showSection('confessSec')">🤫<br><b>Confessions</b></div>
-<div class="item" onclick="showSection('dateSec')">❤️<br><b>Blind Date</b></div>
+<div id="main" class="hidden">
+<div class="top"><div class="top-inner"><div class="logo">𝕏</div><div><b id="welcomeName"></b> • <span id="welcomeSchool" class="handle"></span></div><div onclick="showSection('notifSec');nav(document.querySelectorAll('.nav div')[3])">🔔<span id="notifCount" style="background:red;color:#fff;border-radius:50%;padding:0 6px;font-size:11px">3</span></div></div></div>
+<div class="tabs"><div class="tab active" onclick="setTab(this)">For You</div><div class="tab" onclick="setTab(this)">Following</div></div>
+<div class="wrap">
+
+<!-- STORIES -->
+<div class="stories" id="storiesBar"></div>
+
+<!-- POST BOX -->
+<div class="card">
+<div style="display:flex;gap:10px"><img class="avatar" id="myAvatarImg" src="" style="display:none"><div class="avatar" id="myAvatar">T</div><textarea id="postText" placeholder="What's happening on campus?!" rows="2" style="border:none"></textarea></div>
+<input id="postPhoto" placeholder="📸 Add Photo URL (optional) e.g https://...jpg">
+<div style="display:flex;justify-content:space-between;margin-top:10px;flex-wrap:wrap;gap:8px"><span>🖼️ 🎁 📍 <button class="small sec" onclick="addPollUI()">📊 Add Poll</button></span><button onclick="postTweet()">Post</button></div>
+<div id="pollUI" class="hidden"><input id="pollQ" placeholder="Poll question? e.g Best faculty?"><input id="pollA" placeholder="Option 1"><input id="pollB" placeholder="Option 2"></div>
+<div style="margin-top:10px">
+<span class="pill" onclick="showSection('feedSec')">🏠 Feed</span>
+<span class="pill" onclick="showSection('confessSec')">🤫 Confess</span>
+<span class="pill" onclick="showSection('dateSec')">❤️ Blind Date</span>
+<span class="pill" onclick="showSection('dmSec')">💬 DM</span>
+<span class="pill" onclick="showSection('profileSec')">👤 Profile</span>
+</div>
 </div>
 
-<div id="market">
-<h2>Marketplace</h2>
-<input id="itemName" placeholder="What are you selling? e.g Calculator">
-<input id="itemPrice" placeholder="Price $ e.g 10" type="number">
-<button onclick="addItem()">Post Item +</button>
-<div id="itemsList"></div>
-</div>
+<!-- SEARCH + TRENDING -->
+<div class="card"><input id="searchInput" placeholder="🔎 Search students, #MSU, #NUST..." oninput="doSearch(this.value)"><div id="searchResult"></div>
+<div style="margin-top:10px"><h3>🔥 Trending in Zimbabwe</h3>
+<div class="trend"><b>#MSUCulturalNight</b><br><span class="handle">2,341 posts</span></div>
+<div class="trend"><b>#NUSTvsUZ</b><br><span class="handle">1,892 posts</span></div>
+<div class="trend"><b>#BlindDateZW</b><br><span class="handle">987 posts</span></div>
+<div class="trend"><b>#ExamSeason</b><br><span class="handle">765 posts</span></div>
+</div></div>
 
-<div id="chat" class="hidden">
-<h2>Student Chat</h2>
-<input id="chatMsg" placeholder="Type message...">
-<button onclick="sendChat()">Send 💬</button>
-<div id="chatList"></div>
-</div>
+<div id="feedSec"><div id="feed"></div></div>
 
 <div id="confessSec" class="hidden">
-<h2>🤫 Anonymous Confessions</h2>
-<p style="font-size:13px;color:#666">100% Anonymous - No name shown!</p>
-<textarea id="confessMsg" placeholder="Confess something... e.g I have a crush on someone in my class 👀" rows="3"></textarea>
-<button class="pink" onclick="sendConfess()">Post Anonymously 🤫</button>
-<div id="confessList"></div>
+<div class="card"><h3>🤫 Anonymous Confessions</h3><textarea id="confessMsg" placeholder="Confess anonymously..."></textarea><button onclick="sendConfess()">Post Anonymously</button></div><div id="confessList"></div>
 </div>
 
 <div id="dateSec" class="hidden">
-<h2>❤️ Blind Date</h2>
-<p style="font-size:13px;color:#666">Find your campus crush - No photos, just vibes!</p>
-<input id="dateName" placeholder="Your Nickname">
-<select id="dateGender"><option>I am Male</option><option>I am Female</option></select>
-<select id="dateLooking"><option>Looking for Female</option><option>Looking for Male</option><option>Looking for Anyone</option></select>
-<input id="dateInterest" placeholder="Your vibe? e.g Amapiano, Gym, Study buddy">
-<button class="red" onclick="joinDate()">Find My Blind Date ❤️</button>
-<div id="dateList"></div>
+<div class="card"><h3>❤️ Blind Date</h3>
+<input id="dateName" placeholder="Nickname"><select id="dateGender"><option>I am Male</option><option>I am Female</option></select><select id="dateLooking"><option>Looking for Female</option><option>Looking for Male</option><option>Looking for Anyone</option></select><input id="dateInterest" placeholder="Vibe? e.g Amapiano, Gym"><input id="datePhoto" placeholder="Your Photo URL (optional)"><button onclick="joinDate()">Find My Date ❤️</button></div><div id="dateList"></div>
 </div>
 
-<div style="margin-top:20px">
-<h2>🎉 Events</h2>
-<div class="post">🎉 MSU Cultural Night - Fri 7PM</div>
-<div class="post">⚽ UZ vs NUST Football Derby - Sat</div>
+<div id="dmSec" class="hidden">
+<div class="card"><h3>💬 Direct Messages</h3>
+<div style="display:flex;gap:8px"><input id="dmTo" placeholder="To: e.g Chiedza"><input id="dmMsg" placeholder="Message..."><button onclick="sendDM()">Send</button></div><div id="dmList"></div></div>
 </div>
 
-<button class="sec" onclick="logout()">Log Out</button>
+<div id="profileSec" class="hidden">
+<div class="card" style="text-align:center"><img id="profilePic" class="avatar avatar-big" style="display:none;margin:auto"><div id="profileAvatar" class="avatar avatar-big" style="margin:auto">T</div><h2 id="profileName">Tata</h2><p id="profileSchool" class="handle"></p><p><b id="myPostCount">0</b> Posts • <b id="myLikeCount">0</b> Likes Received</p><button class="sec" onclick="alert('Profile link copied! Share it!')">Share Profile</button></div>
+<div id="myPosts"></div>
+</div>
+
+<div id="notifSec" class="hidden">
+<div class="card"><h3>🔔 Notifications</h3>
+<div class="notif">❤️ <b>Mimi_Gweru</b> liked your confession</div>
+<div class="notif">💬 <b>Tee_Bulawayo</b> commented: "So true 😂"</div>
+<div class="notif">❤️ <b>MSU Official</b> wants to match with you in Blind Date</div>
+<div class="notif">🔥 Your post is trending in #MSU</div>
+</div>
+</div>
+
+</div>
+<div class="nav"><div class="active" onclick="showSection('feedSec');nav(this)">🏠</div><div onclick="showSection('confessSec');nav(this)">🤫</div><div onclick="showSection('dateSec');nav(this)">❤️</div><div onclick="showSection('notifSec');nav(this)">🔔</div><div onclick="showSection('dmSec');nav(this)">💬</div><div onclick="showSection('profileSec');nav(this)">👤</div></div>
 </div>
 
 <script>
-let items = JSON.parse(localStorage.getItem('tc_items')||'[]');
-let chats = JSON.parse(localStorage.getItem('tc_chats')||'[]');
-let confesses = JSON.parse(localStorage.getItem('tc_confess')||'[]');
-let dates = JSON.parse(localStorage.getItem('tc_dates')||'[]');
-
-function createAccount(){
-  let n = document.getElementById('name').value.trim();
-  let s = document.getElementById('school').value.trim();
-  if(!n){ alert('Please enter your name'); return; }
-  if(!s){ s = 'MSU'; }
-  localStorage.setItem('tc_user', JSON.stringify({name:n, school:s}));
-  showMain();
-}
-function showMain(){
-  let u = JSON.parse(localStorage.getItem('tc_user')||'null');
-  if(u){
-    document.getElementById('signup').classList.add('hidden');
-    document.getElementById('main').classList.remove('hidden');
-    document.getElementById('welcomeName').textContent = u.name;
-    document.getElementById('welcomeSchool').textContent = u.school;
-    renderItems(); renderChats(); renderConfess(); renderDates();
-  }
-}
-function showSection(id){
-  ['market','chat','confessSec','dateSec'].forEach(x=>document.getElementById(x).classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
-}
-function addItem(){
-  let n = document.getElementById('itemName').value.trim();
-  let p = document.getElementById('itemPrice').value;
-  if(!n){ alert('Enter item name'); return; }
-  items.unshift({name:n, price:p||'0'});
-  localStorage.setItem('tc_items', JSON.stringify(items));
-  document.getElementById('itemName').value=''; document.getElementById('itemPrice').value='';
-  renderItems(); alert('Posted! ✅');
-}
-function renderItems(){
-  let h = items.length ? '' : '<p>No items yet. Be first to post!</p>';
-  items.forEach(i=>{ h += '<div class="post">🛒 <b>'+i.name+'</b> - $'+i.price+' <button style="width:auto;padding:5px 10px;margin:0" onclick="alert(\'Contact seller in Chat!\')">Buy</button></div>'; });
-  document.getElementById('itemsList').innerHTML = h;
-}
-function sendChat(){
-  let m = document.getElementById('chatMsg').value.trim();
-  let u = JSON.parse(localStorage.getItem('tc_user')||'{"name":"Student"}');
-  if(!m) return;
-  chats.unshift({user:u.name, msg:m});
-  localStorage.setItem('tc_chats', JSON.stringify(chats));
-  document.getElementById('chatMsg').value='';
-  renderChats();
-}
-function renderChats(){
-  let h = chats.length ? '' : '<p>No messages yet. Say Hi!</p>';
-  chats.forEach(c=>{ h += '<div class="post"><b>'+c.user+':</b> '+c.msg+'</div>'; });
-  document.getElementById('chatList').innerHTML = h;
-}
-function sendConfess(){
-  let m = document.getElementById('confessMsg').value.trim();
-  if(!m){ alert('Type your confession first 🤫'); return; }
-  confesses.unshift({msg:m, likes:0});
-  localStorage.setItem('tc_confess', JSON.stringify(confesses));
-  document.getElementById('confessMsg').value='';
-  renderConfess(); alert('Posted Anonymously! 🤫');
-}
-function renderConfess(){
-  let h = confesses.length ? '' : '<p>No confessions yet. Be brave, post first!</p>';
-  confesses.forEach((c,i)=>{ h += '<div class="confess">🤫 <b>Anonymous:</b> '+c.msg+'<br><button style="width:auto;padding:5px 10px;background:#ec4899" onclick="likeConfess('+i+')">❤️ '+c.likes+'</button></div>'; });
-  document.getElementById('confessList').innerHTML = h;
-}
-function likeConfess(i){
-  confesses[i].likes++;
-  localStorage.setItem('tc_confess', JSON.stringify(confesses));
-  renderConfess();
-}
-function joinDate(){
-  let n = document.getElementById('dateName').value.trim();
-  let g = document.getElementById('dateGender').value;
-  let l = document.getElementById('dateLooking').value;
-  let v = document.getElementById('dateInterest').value.trim();
-  if(!n){ alert('Enter nickname for Blind Date'); return; }
-  dates.unshift({name:n, gender:g, looking:l, vibe:v||'Chill'});
-  localStorage.setItem('tc_dates', JSON.stringify(dates));
-  renderDates(); alert('You joined Blind Date! ❤️ Check below for matches!');
-}
-function renderDates(){
-  let h = dates.length ? '<h3>People Looking Now:</h3>' : '<p>No one joined yet. Be first!</p>';
-  dates.forEach(d=>{ h += '<div class="date-card">❤️ <b>'+d.name+'</b><br>'+d.gender+' • '+d.looking+'<br>Vibe: '+d.vibe+'<br><button style="width:auto;padding:6px 12px;background:#ef4444" onclick="alert(\'Match request sent to '+d.name+'! ❤️\')">Say Hi ❤️</button></div>'; });
-  document.getElementById('dateList').innerHTML = h;
+let confesses = JSON.parse(localStorage.getItem('tc_confess_v5')||'null');
+let dates = JSON.parse(localStorage.getItem('tc_dates_v5')||'null');
+let tweets = JSON.parse(localStorage.getItem('tc_tweets_v5')||'null');
+let dms = JSON.parse(localStorage.getItem('tc_dms_v5')||'[]');
+let myReactions = JSON.parse(localStorage.getItem('tc_myreact_v5')||'{}');
+let pollVotes = JSON.parse(localStorage.getItem('tc_polls_v5')||'{}');
+function makeReactions(){ return {love:0,laugh:0,wow:0,sad:0,angry:0, comments:[]}; }
+if(!confesses) confesses=[
+ {msg:'I have a crush on someone in my Accounting class but too shy to talk 😭',school:'MSU',r:{love:142,laugh:12,wow:8,sad:20,angry:0,comments:[{u:'Anon',t:'Just shoot your shot!'}]}},
+ {msg:'Someone in Block C plays Amapiano too loud at 2AM 😂',school:'NUST',r:{love:50,laugh:210,wow:5,sad:0,angry:15,comments:[]}},
+];
+if(!dates) dates=[
+ {name:'Mimi_Gweru',gender:'I am Female',looking:'Looking for Male',vibe:'Amapiano • Coffee',school:'MSU',photo:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200',r:{love:45,laugh:2,wow:3,sad:0,angry:0,comments:[]}},
+ {name:'Tee_Bulawayo',gender:'I am Male',looking:'Looking for Female',vibe:'Football • Study buddy',school:'NUST',photo:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200',r:{love:32,laugh:1,wow:5,sad:0,angry:0,comments:[]}},
+];
+if(!tweets) tweets=[
+ {user:'MSU Official',handle:'@msu_zw • 2h',text:'🎉 MSU Cultural Night this Friday 7PM! Come support your faculty! #MSUCulturalNight',photo:'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600',r:{love:342,laugh:10,wow:20,sad:0,angry:0,comments:[{u:'Tata',t:'We will be there! 🔥'}]},reposts:89,poll:null},
+ {user:'NUST SRC',handle:'@nust_src • 4h',text:'⚽ DERBY: NUST vs UZ Saturday! Who will win? Vote! #NUSTvsUZ',photo:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600',r:{love:521,laugh:5,wow:30,sad:0,angry:0,comments:[]},reposts:120,poll:{q:'Who wins the Derby?',a:'NUST',b:'UZ',va:156,vb:98}},
+ {user:'Tata',handle:'@tata_msu • 5h',text:'Gweru sunsets hit different 🌅 #MSU #Gweru',photo:'https://images.unsplash.com/photo-150 sunset?w=600',r:{love:45,laugh:0,wow:12,sad:0,angry:0,comments:[]},reposts:12,poll:null},
+];
+function save(){ localStorage.setItem('tc_confess_v5',JSON.stringify(confesses)); localStorage.setItem('tc_dates_v5',JSON.stringify(dates)); localStorage.setItem('tc_tweets_v5',JSON.stringify(tweets)); localStorage.setItem('tc_dms_v5',JSON.stringify(dms)); localStorage.setItem('tc_myreact_v5',JSON.stringify(myReactions)); localStorage.setItem('tc_polls_v5',JSON.stringify(pollVotes)); }
+function createAccount(){ let n=document.getElementById('name').value.trim(); let s=document.getElementById('school').value.trim(); let p=document.getElementById('photoUrl').value.trim(); if(!n){alert('Enter name');return;} if(!s)s='MSU'; localStorage.setItem('tc_user',JSON.stringify({name:n,school:s,photo:p})); showMain(); }
+function showMain(){ let u=JSON.parse(localStorage.getItem('tc_user')||'null'); if(u){ document.getElementById('signup').classList.add('hidden'); document.getElementById('main').classList.remove('hidden'); document.getElementById('welcomeName').textContent=u.name; document.getElementById('welcomeSchool').textContent=u.school; document.getElementById('myAvatar').textContent=u.name[0]; if(u.photo){ document.getElementById('myAvatarImg').src=u.photo; document.getElementById('myAvatarImg').style.display='flex'; document.getElementById('myAvatar').style.display='none'; document.getElementById('profilePic').src=u.photo; document.getElementById('profilePic').style.display='block'; document.getElementById('profileAvatar').style.display='none'; } document.getElementById('profileName').textContent=u.name; document.getElementById('profileSchool').textContent=u.school; renderAll(); } }
+function setTab(el){ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); el.classList.add('active'); renderAll(); }
+function nav(el){ document.querySelectorAll('.nav div').forEach(x=>x.classList.remove('active')); el.classList.add('active'); }
+function showSection(id){ ['feedSec','confessSec','dateSec','dmSec','profileSec','notifSec'].forEach(x=>document.getElementById(x).classList.add('hidden')); document.getElementById(id).classList.remove('hidden'); renderAll(); }
+function getUser(){ return JSON.parse(localStorage.getItem('tc_user')||'{"name":"You","school":"MSU","photo":""}'); }
+function addPollUI(){ document.getElementById('pollUI').classList.toggle('hidden'); }
+function doSearch(q){ if(!q) {document.getElementById('searchResult').innerHTML=''; return;} let res=tweets.filter(t=>t.text.toLowerCase().includes(q.toLowerCase())||t.user.toLowerCase().includes(q.toLowerCase())); document.getElementById('searchResult').innerHTML = res.length? res.map(t=>`<div style="padding:8px;border-bottom:1px solid #eee"><b>${t.user}</b>: ${t.text.slice(0,60)}</div>`).join('') : '<p>No results for '+q+'</p>'; }
+function react(type, kind, idx){ let arr = kind==='tweet'?tweets: kind==='confess'?confesses:dates; let key = kind+'_'+idx; let prev = myReactions[key]; if(prev===type){ arr[idx].r[type]--; delete myReactions[key]; } else { if(prev) arr[idx].r[prev]--; arr[idx].r[type]++; myReactions[key]=type; } save(); renderAll(); }
+function addComment(kind, idx){ let input = document.getElementById('c_'+kind+'_'+idx); let txt = input.value.trim(); if(!txt) return; let arr = kind==='tweet'?tweets: kind==='confess'?confesses:dates; arr[idx].r.comments.push({u:getUser().name, t:txt}); save(); renderAll(); }
+function repost(idx){ tweets[idx].reposts++; save(); renderAll(); alert('Reposted! 🔁'); }
+function votePoll(idx, choice){ let key='poll_'+idx; if(pollVotes[key]) return alert('You already voted!'); pollVotes[key]=choice; if(choice==='a') tweets[idx].poll.va++; else tweets[idx].poll.vb++; save(); renderAll(); }
+function reactSummary(r){ let total=r.love+r.laugh+r.wow+r.sad+r.angry; let s=''; if(r.love) s+='❤️'+r.love+' '; if(r.laugh) s+='😂'+r.laugh+' '; if(r.wow) s+='😮'+r.wow+' '; if(r.sad) s+='😢'+r.sad+' '; if(r.angry) s+='😡'+r.angry+' '; return total? `<div class="react-summary">${s} • ${total} reactions • ${r.comments.length} comments</div>` : `<div class="react-summary">Be first to react!</div>`; }
+function reactButtons(kind, idx, r){ let key=kind+'_'+idx; let mine=myReactions[key]; return `<div class="reactions"><button class="react-btn ${mine==='love'?'active':''}" onclick="react('love','${kind}',${idx})">❤️ ${r.love}</button><button class="react-btn ${mine==='laugh'?'active':''}" onclick="react('laugh','${kind}',${idx})">😂 ${r.laugh}</button><button class="react-btn ${mine==='wow'?'active':''}" onclick="react('wow','${kind}',${idx})">😮 ${r.wow}</button><button class="react-btn ${mine==='sad'?'active':''}" onclick="react('sad','${kind}',${idx})">😢 ${r.sad}</button><button class="react-btn ${mine==='angry'?'active':''}" onclick="react('angry','${kind}',${idx})">😡 ${r.angry}</button></div>`; }
+function commentSection(kind, idx, r){ let html=`<div class="comment-box"><input id="c_${kind}_${idx}" placeholder="Add a comment..."><button class="small" onclick="addComment('${kind}',${idx})">Reply</button></div>`; r.comments.forEach(c=>{ html+=`<div class="comment"><b>${c.u}:</b> ${c.t}</div>`; }); return html; }
+function sendConfess(){ let m=document.getElementById('confessMsg').value.trim(); if(!m) return alert('Type confession'); let u=getUser(); confesses.unshift({msg:m,school:u.school,r:makeReactions()}); save(); renderAll(); document.getElementById('confessMsg').value=''; alert('Posted Anonymously 🤫'); }
+function joinDate(){ let n=document.getElementById('dateName').value.trim(); if(!n) return alert('Enter nickname'); let u=getUser(); dates.unshift({name:n,gender:document.getElementById('dateGender').value,looking:document.getElementById('dateLooking').value,vibe:document.getElementById('dateInterest').value||'Chill',school:u.school,photo:document.getElementById('datePhoto').value||'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200',r:makeReactions()}); save(); renderAll(); alert('Joined Blind Date ❤️'); }
+function postTweet(){ let t=document.getElementById('postText').value.trim(); if(!t && !document.getElementById('postPhoto').value) return alert('Type something'); let u=getUser(); let poll=null; if(!document.getElementById('pollUI').classList.contains('hidden') && document.getElementById('pollQ').value){ poll={q:document.getElementById('pollQ').value,a:document.getElementById('pollA').value||'Yes',b:document.getElementById('pollB').value||'No',va:0,vb:0}; } tweets.unshift({user:u.name,handle:'@'+u.name.toLowerCase()+' • now',text:t,photo:document.getElementById('postPhoto').value||'',r:makeReactions(),reposts:0,poll:poll}); save(); document.getElementById('postText').value=''; document.getElementById('postPhoto').value=''; renderAll(); }
+function sendDM(){ let to=document.getElementById('dmTo').value.trim(); let m=document.getElementById('dmMsg').value.trim(); if(!to||!m) return alert('Enter name + message'); dms.unshift({to:to,from:getUser().name,msg:m,time:'now'}); save(); renderAll(); document.getElementById('dmMsg').value=''; alert('DM sent to '+to+' 💬'); }
+function renderAll(){
+ let stories = [{n:'MSU',e:'🎓',img:'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=100'},{n:'Tata',e:'🌅',img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'},{n:'Mimi',e:'❤️',img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100'},{n:'NUST',e:'⚽',img:'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=100'},{n:'UZ',e:'📚',img:'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=100'}];
+ document.getElementById('storiesBar').innerHTML = stories.map(s=>`<div class="story" onclick="alert('Viewing ${s.n} story!')"><div class="story-circle"><img src="${s.img}"></div><div style="font-size:12px">${s.n}</div></div>`).join('') + `<div class="story" onclick="alert('Add your story!')"><div class="story-circle" style="border-color:#ccc">+</div><div style="font-size:12px">Your Story</div></div>`;
+ let ch=''; confesses.forEach((c,i)=>{ ch+=`<div class="card"><div style="display:flex"><div class="avatar" style="background:#ec4899">?</div><div style="flex:1"><div class="name">Anonymous <span class="handle">• ${c.school}</span></div><div style="margin-top:6px">${c.msg}</div>${reactSummary(c.r)}${reactButtons('confess',i,c.r)}${commentSection('confess',i,c.r)}</div></div></div>`; }); document.getElementById('confessList').innerHTML=ch;
+ let dh=''; dates.forEach((d,i)=>{ dh+=`<div class="card" style="text-align:center"><img src="${d.photo||''}" style="width:120px;height:120px;border-radius:50%;object-fit:cover"><br><b>${d.name}</b><br><span class="handle">${d.school} • ${d.looking}</span><br>Vibe: ${d.vibe}<div style="margin-top:8px"><button onclick="document.getElementById('dmTo').value='${d.name}';showSection('dmSec');alert('Now DM ${d.name}!')">💬 DM ${d.name}</button></div>${reactSummary(d.r)}${reactButtons('date',i,d.r)}${commentSection('date',i,d.r)}</div>`; }); document.getElementById('dateList').innerHTML=dh;
+ let dmh=''; if(!dms.length) dmh='<p>No DMs yet. Start one!</p>'; dms.forEach(d=>{ dmh+=`<div class="dm-msg ${d.from===getUser().name?'dm-me':'dm-them'}"><b>${d.from} → ${d.to}:</b> ${d.msg}</div>`; }); document.getElementById('dmList').innerHTML=dmh;
+ let fh=''; let myPosts=''; tweets.forEach((tw,i)=>{ let pollHtml=''; if(tw.poll){ let total=tw.poll.va+tw.poll.vb||1; pollHtml=`<div style="margin-top:10px"><b>📊 ${tw.poll.q}</b><div class="poll-opt" onclick="votePoll(${i},'a')"><div class="poll-bar" style="width:${Math.round(tw.poll.va/total*100)}%"></div><div class="poll-text">${tw.poll.a} - ${Math.round(tw.poll.va/total*100)}% (${tw.poll.va})</div></div><div class="poll-opt" onclick="votePoll(${i},'b')"><div class="poll-bar" style="width:${Math.round(tw.poll.vb/total*100)}%"></div><div class="poll-text">${tw.poll.b} - ${Math.round(tw.poll.vb/total*100)}% (${tw.poll.vb})</div></div></div>`; } let photoHtml=tw.photo?`<img class="post-photo" src="${tw.photo}">`:''; let card=`<div class="card"><div style="display:flex"><div class="avatar">${tw.user[0]}</div><div style="flex:1"><div><span class="name">${tw.user}</span> <span class="handle">${tw.handle}</span></div><div style="margin-top:6px">${tw.text}</div>${photoHtml}${pollHtml}${reactSummary(tw.r)}${reactButtons('tweet',i,tw.r)}<div class="actions"><span onclick="repost(${i})">🔁 ${tw.reposts} Repost</span><span onclick="alert('Link copied!')">📤 Share</span><span onclick="document.getElementById('dmTo').value='${tw.user}';showSection('dmSec')">💬 DM</span></div>${commentSection('tweet',i,tw.r)}</div></div></div>`; fh+=card; if(tw.user===getUser().name) myPosts+=card; }); document.getElementById('feed').innerHTML='<h3 style="padding:0 15px">Trending - Real Photos • Polls • Reactions</h3>'+fh; document.getElementById('myPosts').innerHTML=myPosts||'<p style="padding:15px">No posts yet. Post something!</p>'; document.getElementById('myPostCount').textContent=tweets.filter(t=>t.user===getUser().name).length; let likes=0; tweets.forEach(t=>{if(t.user===getUser().name) likes+=t.r.love}); document.getElementById('myLikeCount').textContent=likes;
 }
 function logout(){ localStorage.removeItem('tc_user'); location.reload(); }
 showMain();
