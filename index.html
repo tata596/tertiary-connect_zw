@@ -6,80 +6,72 @@
 <title>tertiary-connect_zw</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-body { background:#0F0F1A; color:#fff; min-height:100vh; display:flex; justify-content:center; align-items:flex-start; padding:20px 15px; }
-.container { width:100%; max-width:420px; }
+body { background:#0F0F1A; color:#fff; min-height:100vh; }
+.container { width:100%; max-width:420px; margin:0 auto; padding:20px 15px 90px; }
 .card { background:#1A1A2E; border-radius:20px; padding:25px 20px; margin-top:20px; }
 h2 { text-align:center; font-size:28px; font-weight:800; }
 .subtitle { text-align:center; color:#aaa; margin:10px 0 22px; font-size:17px; font-weight:700; }
-input, select { width:100%; background:#1f1f2e; border:1px solid #2a2a3d; color:white; padding:14px 15px; border-radius:12px; font-size:15px; margin-bottom:12px; outline:none; }
-input::placeholder { color:#7a7a8a; }
+input, select, textarea { width:100%; background:#1f1f2e; border:1px solid #2a2a3d; color:white; padding:14px 15px; border-radius:12px; font-size:15px; margin-bottom:12px; outline:none; }
+input::placeholder, textarea::placeholder { color:#7a7a8a; }
 select { appearance:none; color:#c0c0d0; }
 select option { background:#1f1f2e; }
 .btn { width:100%; background:linear-gradient(90deg,#a855f7,#c084fc); color:white; border:none; padding:14px; border-radius:30px; font-size:16px; font-weight:700; cursor:pointer; }
+.btn2 { background:#1f1f2e; color:white; border:1px solid #2a2a3d; padding:10px 15px; border-radius:20px; cursor:pointer; font-size:13px; }
 .note { text-align:center; color:#7a7a8a; font-size:13px; margin-top:15px; line-height:1.5; }
 .hidden { display:none !important; }
-.success-box { text-align:center; padding:10px; }
-.success-box p { color:#a0a0b0; line-height:1.6; font-size:14px; }
-.link-btn { display:block; text-align:center; background:#1f1f2e; color:white; text-decoration:none; padding:12px; border-radius:30px; margin-top:15px; font-weight:600; }
+.topbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5px; }
+.topbar b { font-size:18px; }
+.pill { background:#a855f7; padding:5px 12px; border-radius:20px; font-size:12px; font-weight:700; }
+.post { background:#1A1A2E; border-radius:16px; padding:15px; margin-bottom:12px; }
+.post-top { display:flex; justify-content:space-between; color:#aaa; font-size:12px; margin-bottom:8px; }
+.post-text { font-size:15px; line-height:1.5; }
+.post-actions { display:flex; gap:10px; margin-top:12px; }
+.like-btn { background:#1f1f2e; border:none; color:#ff6b9d; padding:7px 14px; border-radius:20px; cursor:pointer; font-size:13px; }
+.chat-room { background:#1A1A2E; border-radius:16px; padding:15px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
+.chat-room b { font-size:15px; }
+.chat-room span { color:#aaa; font-size:12px; }
+.chat-box { background:#1A1A2E; border-radius:16px; padding:15px; height:320px; overflow-y:auto; margin-bottom:12px; }
+.msg { background:#1f1f2e; padding:10px 12px; border-radius:12px; margin-bottom:8px; font-size:14px; line-height:1.4; }
+.msg.me { background:#a855f7; margin-left:30px; }
+.msg small { display:block; color:#bbb; font-size:11px; margin-bottom:3px; }
+.msg.me small { color:#e9d5ff; }
+.bottom-nav { position:fixed; bottom:0; left:0; right:0; background:#1A1A2E; display:flex; justify-content:space-around; padding:12px 0 18px; border-top:1px solid #2a2a3d; z-index:99; }
+.bottom-nav button { background:none; border:none; color:#aaa; font-size:13px; cursor:pointer; font-weight:600; }
+.bottom-nav button.active { color:#a855f7; }
+.tabs { display:flex; gap:8px; margin:15px 0; }
+.tabs button { flex:1; padding:10px; border-radius:20px; border:1px solid #2a2a3d; background:#1f1f2e; color:#aaa; cursor:pointer; font-weight:600; }
+.tabs button.active { background:#a855f7; color:white; border-color:#a855f7; }
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="card" id="registerCard">
+
+<div class="container" id="registerPage">
+  <div class="card">
     <h2>tertiary-connect_zw</h2>
     <p class="subtitle" id="anonTitle">Create Account-@anonymous #48383</p>
-
     <input type="text" id="regName" placeholder="Your Name e.g @anonymous3737">
     <input type="text" id="regSchool" placeholder="School e.g your institution">
-
     <select id="regGender">
       <option value="">Select Gender * REQUIRED</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
       <option value="Other">Other / Prefer not to say</option>
     </select>
-
     <button class="btn" onclick="createAccount()">Create My Account ✅</button>
     <p class="note">Anonymous • Safe • For Tertiary Students in Zimbabwe<br>Your username is hidden from everyone.</p>
   </div>
-
-  <div class="card hidden" id="successCard">
-    <div class="success-box">
-      <h3>Welcome! 🎉</h3>
-      <p id="welcomeText"></p>
-      <p style="margin-top:10px; color:#a855f7; font-weight:700;">Your account is ready!</p>
-      <a href="#" class="link-btn" onclick="goToChats()">Continue →</a>
-    </div>
-  </div>
 </div>
 
-<script>
-const randomNum = Math.floor(10000 + Math.random()*89999);
-document.getElementById('anonTitle').textContent = 'Create Account-@anonymous #' + randomNum;
+<div class="container hidden" id="mainPage">
+  <div class="topbar">
+    <b>tertiary-connect_zw</b>
+    <span class="pill" id="myAnon"> @anonymous </span>
+  </div>
+  <p style="color:#aaa; font-size:13px; padding:0 5px;" id="mySchoolText"></p>
 
-function createAccount(){
-  const name = document.getElementById('regName').value.trim();
-  const school = document.getElementById('regSchool').value.trim();
-  const gender = document.getElementById('regGender').value;
-  if(!name){ alert('Please enter Your Name'); return; }
-  if(!school){ alert('Please enter School'); return; }
-  if(!gender){ alert('Please Select Gender - REQUIRED'); return; }
-  const user = { username: name, institution: school, gender: gender, anonId: randomNum, created: new Date().toISOString() };
-  localStorage.setItem('tc_user', JSON.stringify(user));
-  document.getElementById('registerCard').classList.add('hidden');
-  document.getElementById('successCard').classList.remove('hidden');
-  document.getElementById('welcomeText').innerHTML = 'You are <b style="color:white">@anonymous #'+randomNum+'</b><br>Your Name: <b style="color:white">'+name+'</b><br>School: <b style="color:white">'+school+'</b><br>Gender: <b style="color:white">'+gender+'</b>';
-}
-function goToChats(){ alert('CODE 2 - Chats coming next!'); }
-window.onload = function(){
-  const saved = localStorage.getItem('tc_user');
-  if(saved){
-    const u = JSON.parse(saved);
-    document.getElementById('registerCard').classList.add('hidden');
-    document.getElementById('successCard').classList.remove('hidden');
-    document.getElementById('welcomeText').innerHTML = 'Welcome back <b style="color:white">@anonymous #'+(u.anonId||48383)+'</b><br>Your Name: <b style="color:white">'+u.username+'</b><br>School: <b style="color:white">'+u.institution+'</b>';
-  }
-}
-</script>
-</body>
-</html>
+  <div id="tabConfess">
+    <div class="card" style="margin-top:10px;">
+      <textarea id="confessText" rows="3" placeholder="Write a confession anonymously... 😶"></textarea>
+      <button class="btn" onclick="postConfession()">Post Anonymously 👻</button>
+    </div>
+    <div id="confessList" style="margin-top:15px;"></div>
