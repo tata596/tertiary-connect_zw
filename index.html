@@ -7,71 +7,207 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
 body { background:#0F0F1A; color:#fff; min-height:100vh; }
-.container { width:100%; max-width:420px; margin:0 auto; padding:20px 15px 90px; }
-.card { background:#1A1A2E; border-radius:20px; padding:25px 20px; margin-top:20px; }
+.container { width:100%; max-width:420px; margin:0 auto; padding:20px 15px 110px; }
+.card { background:#1A1A2E; border-radius:20px; padding:20px; margin-top:15px; }
 h2 { text-align:center; font-size:28px; font-weight:800; }
-.subtitle { text-align:center; color:#aaa; margin:10px 0 22px; font-size:17px; font-weight:700; }
-input, select, textarea { width:100%; background:#1f1f2e; border:1px solid #2a2a3d; color:white; padding:14px 15px; border-radius:12px; font-size:15px; margin-bottom:12px; outline:none; }
-input::placeholder, textarea::placeholder { color:#7a7a8a; }
-select { appearance:none; color:#c0c0d0; }
-select option { background:#1f1f2e; }
-.btn { width:100%; background:linear-gradient(90deg,#a855f7,#c084fc); color:white; border:none; padding:14px; border-radius:30px; font-size:16px; font-weight:700; cursor:pointer; }
-.btn2 { background:#1f1f2e; color:white; border:1px solid #2a2a3d; padding:10px 15px; border-radius:20px; cursor:pointer; font-size:13px; }
-.note { text-align:center; color:#7a7a8a; font-size:13px; margin-top:15px; line-height:1.5; }
+.subtitle { text-align:center; color:#aaa; margin:10px 0 22px; font-size:16px; font-weight:700; }
+input, select, textarea { width:100%; background:#1f1f2e; border:1px solid #2a2a3d; color:white; padding:13px 14px; border-radius:12px; font-size:14px; margin-bottom:10px; outline:none; }
+.btn { width:100%; background:linear-gradient(90deg,#a855f7,#c084fc); color:white; border:none; padding:13px; border-radius:30px; font-size:15px; font-weight:700; cursor:pointer; }
+.btn2 { background:#1f1f2e; color:white; border:1px solid #2a2a3d; padding:9px 14px; border-radius:20px; cursor:pointer; font-size:13px; }
+.note { text-align:center; color:#7a7a8a; font-size:13px; margin-top:15px; }
 .hidden { display:none !important; }
 .topbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5px; }
-.topbar b { font-size:18px; }
 .pill { background:#a855f7; padding:5px 12px; border-radius:20px; font-size:12px; font-weight:700; }
 .post { background:#1A1A2E; border-radius:16px; padding:15px; margin-bottom:12px; }
 .post-top { display:flex; justify-content:space-between; color:#aaa; font-size:12px; margin-bottom:8px; }
 .post-text { font-size:15px; line-height:1.5; }
-.post-actions { display:flex; gap:10px; margin-top:12px; }
+.post-actions { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
 .like-btn { background:#1f1f2e; border:none; color:#ff6b9d; padding:7px 14px; border-radius:20px; cursor:pointer; font-size:13px; }
+.like-btn.gray { color:#aaa; }
+.comments { margin-top:10px; border-top:1px solid #2a2a3d; padding-top:10px; }
+.comment { background:#1f1f2e; padding:8px 10px; border-radius:10px; font-size:13px; margin-bottom:6px; }
+.comment-input { display:flex; gap:6px; margin-top:8px; }
+.comment-input input { margin:0; flex:1; padding:10px; }
+.comment-input button { background:#a855f7; color:white; border:none; padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:700; }
 .chat-room { background:#1A1A2E; border-radius:16px; padding:15px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
-.chat-room b { font-size:15px; }
-.chat-room span { color:#aaa; font-size:12px; }
-.chat-box { background:#1A1A2E; border-radius:16px; padding:15px; height:320px; overflow-y:auto; margin-bottom:12px; }
-.msg { background:#1f1f2e; padding:10px 12px; border-radius:12px; margin-bottom:8px; font-size:14px; line-height:1.4; }
+.chat-box { background:#1A1A2E; border-radius:16px; padding:15px; height:280px; overflow-y:auto; margin-bottom:12px; }
+.msg { background:#1f1f2e; padding:10px 12px; border-radius:12px; margin-bottom:8px; font-size:14px; }
 .msg.me { background:#a855f7; margin-left:30px; }
 .msg small { display:block; color:#bbb; font-size:11px; margin-bottom:3px; }
-.msg.me small { color:#e9d5ff; }
 .bottom-nav { position:fixed; bottom:0; left:0; right:0; background:#1A1A2E; display:flex; justify-content:space-around; padding:12px 0 18px; border-top:1px solid #2a2a3d; z-index:99; }
-.bottom-nav button { background:none; border:none; color:#aaa; font-size:13px; cursor:pointer; font-weight:600; }
+.bottom-nav button { background:none; border:none; color:#aaa; font-size:12px; cursor:pointer; font-weight:600; }
 .bottom-nav button.active { color:#a855f7; }
 .tabs { display:flex; gap:8px; margin:15px 0; }
 .tabs button { flex:1; padding:10px; border-radius:20px; border:1px solid #2a2a3d; background:#1f1f2e; color:#aaa; cursor:pointer; font-weight:600; }
 .tabs button.active { background:#a855f7; color:white; border-color:#a855f7; }
+.menu { display:flex; gap:8px; overflow-x:auto; padding:8px 2px; }
+.menu button { flex-shrink:0; background:#1f1f2e; border:1px solid #2a2a3d; color:#ccc; padding:9px 14px; border-radius:20px; cursor:pointer; font-size:13px; font-weight:600; }
+.menu button.active { background:#a855f7; color:#fff; border-color:#a855f7; }
+.stories::-webkit-scrollbar, .menu::-webkit-scrollbar { display:none; }
+.item { background:#1A1A2E; border-radius:16px; padding:14px; margin-bottom:10px; }
+.item p { color:#aaa; font-size:13px; margin:6px 0; line-height:1.4; }
+.price { color:#1DB954; font-weight:800; }
+.poll-opt { background:#1f1f2e; padding:10px; border-radius:12px; margin:6px 0; cursor:pointer; display:flex; justify-content:space-between; }
 </style>
 </head>
 <body>
-
 <div class="container" id="registerPage">
-  <div class="card">
-    <h2>tertiary-connect_zw</h2>
-    <p class="subtitle" id="anonTitle">Create Account-@anonymous #48383</p>
-    <input type="text" id="regName" placeholder="Your Name e.g @anonymous3737">
-    <input type="text" id="regSchool" placeholder="School e.g your institution">
-    <select id="regGender">
-      <option value="">Select Gender * REQUIRED</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-      <option value="Other">Other / Prefer not to say</option>
-    </select>
-    <button class="btn" onclick="createAccount()">Create My Account ✅</button>
-    <p class="note">Anonymous • Safe • For Tertiary Students in Zimbabwe<br>Your username is hidden from everyone.</p>
-  </div>
+<div class="card">
+<h2>tertiary-connect_zw</h2>
+<p class="subtitle" id="anonTitle">Create Account-@anonymous</p>
+<input type="text" id="regName" placeholder="Your Name e.g Tata">
+<input type="text" id="regSchool" placeholder="School e.g MSU / UZ / CUT">
+<select id="regGender"><option value="">Select Gender * REQUIRED</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select>
+<button class="btn" onclick="createAccount()">Create My Account ✅</button>
+<p class="note">Anonymous • Safe • For Tertiary Students in Zimbabwe</p>
+</div>
+</div>
+<div class="container hidden" id="mainPage">
+<div class="topbar"><b>tertiary-connect_zw</b><span class="pill" id="myAnon">@anonymous</span></div>
+<p style="color:#aaa; font-size:13px; padding:0 5px;" id="mySchoolText"></p>
+<div class="menu">
+<button id="m-confess" class="active" onclick="switchTab('confess')">👻 Confess</button>
+<button id="m-chats" onclick="switchTab('chats')">💬 Chats</button>
+<button id="m-market" onclick="switchTab('market')">🛒 Market</button>
+<button id="m-events" onclick="switchTab('events')">🎉 Events</button>
+<button id="m-polls" onclick="switchTab('polls')">🗳️ Polls</button>
+<button id="m-jobs" onclick="switchTab('jobs')">💼 Jobs</button>
+<button id="m-blind" onclick="switchTab('blind')">💘 Blind Dates</button>
+<button id="m-private" onclick="switchTab('private')">💌 Private DM</button>
+</div>
+<!-- STORIES -->
+<div class="stories" style="display:flex;gap:10px;overflow-x:auto;padding:10px 2px">
+<div onclick="showCampusStory('Blind Dates')" style="min-width:110px;height:160px;border-radius:14px;background:#FF4D6D;padding:10px;position:relative;flex-shrink:0;cursor:pointer"><p style="background:#000;color:#fff;font-size:11px;padding:4px;border-radius:8px;display:inline-block;margin:0">Sadza or rice?</p><p style="background:#1877F2;color:#fff;font-size:11px;padding:4px;border-radius:8px;display:inline-block;margin:4px 0">Sadza. Always.</p><p style="position:absolute;bottom:8px;left:10px;margin:0"><b>Blind dates</b><br><span style="font-size:12px;color:#ddd">Tonight at 11pm</span></p></div>
+<div onclick="showCampusStory('CUT')" style="min-width:110px;height:160px;border-radius:14px;background:#222;position:relative;flex-shrink:0;overflow:hidden;cursor:pointer"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=300" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6"><p style="position:absolute;bottom:8px;left:10px;margin:0;z-index:1"><b>CUT</b><br><span style="font-size:11px">Chinhoyi</span></p></div>
+<div onclick="showCampusStory('MSU')" style="min-width:110px;height:160px;border-radius:14px;background:#222;position:relative;flex-shrink:0;overflow:hidden;cursor:pointer"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=300" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6"><p style="position:absolute;bottom:8px;left:10px;margin:0;z-index:1"><b>MSU</b><br><span style="font-size:11px">Gweru</span></p></div>
+<div onclick="showCampusStory('NUST')" style="min-width:110px;height:160px;border-radius:14px;background:#1E3A8A;position:relative;flex-shrink:0;overflow:hidden;cursor:pointer"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6"><p style="position:absolute;bottom:8px;left:10px;margin:0;z-index:1"><b>NUST</b><br><span style="font-size:11px">Bulawayo</span></p></div>
+<div onclick="showCampusStory('UZ')" style="min-width:110px;height:160px;border-radius:14px;background:#7F1D1D;position:relative;flex-shrink:0;overflow:hidden;cursor:pointer"><img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=300" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6"><p style="position:absolute;bottom:8px;left:10px;margin:0;z-index:1"><b>UZ</b><br><span style="font-size:11px">Harare</span></p></div>
+<div onclick="showCampusStory('Mutare Poly')" style="min-width:110px;height:160px;border-radius:14px;background:#15803D;position:relative;flex-shrink:0;overflow:hidden;cursor:pointer"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6"><p style="position:absolute;bottom:8px;left:10px;margin:0;z-index:1"><b>Mutare Poly</b><br><span style="font-size:11px">Mutare ⭐</span></p></div>
+<div onclick="showCampusStory('Harare Poly')" style="min-width:110px;height:160px;border-radius:14px;background:#B45309;position:relative;flex-shrink:0;overflow:hidden;cursor:pointer"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=300" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6"><p style="position:absolute;bottom:8px;left:10px;margin:0;z-index:1"><b>Harare Poly</b><br><span style="font-size:11px">Harare</span></p></div>
+<div onclick="showCampusStory('BUSE')" style="min-width:110px;height:160px;border-radius:14px;background:#065F46;position:relative;flex-shrink:0;overflow:hidden;cursor:pointer"><img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?w=300" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6"><p style="position:absolute;bottom:8px;left:10px;margin:0;z-index:1"><b>BUSE</b><br><span style="font-size:11px">Bindura</span></p></div>
+</div>
+<div id="storyBanner" class="hidden" style="background:#1A1A2E;border-radius:12px;padding:12px;margin:5px 0;font-size:14px;"></div><!-- CONFESS + X FEED -->
+<div id="tabConfess">
+<div class="card" style="border:2px solid #000;">
+<b>𝕏 PUBLIC FEED - Everyone Sees This! 👀</b><br><span style="color:#aaa;font-size:13px">Like X / Twitter - Post it, whole Zimbabwe sees it!</span><br><br>
+<textarea id="confessText" rows="3" placeholder="What's happening? Post a confession, thought, news... 😶"></textarea>
+<button class="btn" onclick="postConfession()">Post 𝕏 Anonymously 👻</button>
+</div>
+<div id="confessList" style="margin-top:15px;"></div>
+<div id="xFeed"></div>
 </div>
 
-<div class="container hidden" id="mainPage">
-  <div class="topbar">
-    <b>tertiary-connect_zw</b>
-    <span class="pill" id="myAnon"> @anonymous </span>
-  </div>
-  <p style="color:#aaa; font-size:13px; padding:0 5px;" id="mySchoolText"></p>
+<!-- CHATS -->
+<div id="tabChats" class="hidden">
+<div class="tabs"><button id="btnRooms" class="active" onclick="showRooms()">Rooms</button><button id="btnMyChat" onclick="showMyChat()">My School Chat</button></div>
+<div id="roomsList"></div>
+<div id="chatView" class="hidden">
+<button class="btn2" onclick="backToRooms()">← Back to Rooms</button>
+<h3 id="roomTitle" style="margin:12px 0;"></h3>
+<div class="chat-box" id="chatBox"></div>
+<div style="display:flex; gap:8px;"><input type="text" id="chatInput" placeholder="Type message..." style="margin:0; flex:1;"><button class="btn" style="width:80px;" onclick="sendMsg()">Send</button></div>
+</div>
+</div><!-- MARKET -->
+<div id="tabMarket" class="hidden">
+<div class="card"><h3>🛒 Marketplace</h3><p style="color:#aaa;font-size:13px;margin:8px 0">Buy / sell textbooks, laptops, hostel stuff</p>
+<input id="mTitle" placeholder="What are you selling? e.g Laptop HP"><input id="mPrice" placeholder="Price e.g $150"><input id="mDesc" placeholder="Condition / Location e.g Mutare Poly, Good">
+<button class="btn" onclick="addMarket()">Post For Sale 🛒</button></div>
+<div id="marketList" style="margin-top:12px;"></div>
+</div>
 
-  <div id="tabConfess">
-    <div class="card" style="margin-top:10px;">
-      <textarea id="confessText" rows="3" placeholder="Write a confession anonymously... 😶"></textarea>
-      <button class="btn" onclick="postConfession()">Post Anonymously 👻</button>
-    </div>
-    <div id="confessList" style="margin-top:15px;"></div>
+<!-- EVENTS -->
+<div id="tabEvents" class="hidden">
+<div class="card"><h3>🎉 Campus Events</h3><p style="color:#aaa;font-size:13px;margin:8px 0">Parties, Gala, Football, Exams</p>
+<input id="eTitle" placeholder="Event name e.g CUT Gala"><input id="eDate" placeholder="Date e.g Sat 15 Nov, 6pm"><input id="ePlace" placeholder="Place e.g Mutare Poly Hall">
+<button class="btn" onclick="addEvent()">Post Event 🎉</button></div>
+<div id="eventList" style="margin-top:12px;"></div>
+</div>
+
+<!-- POLLS -->
+<div id="tabPolls" class="hidden">
+<div class="card"><h3>🗳️ Polls - Vote!</h3><p style="color:#aaa;font-size:13px;margin:8px 0">Who is best campus? Vote anonymously</p>
+<input id="pQ" placeholder="Your poll question e.g Best campus?"><input id="pOpt" placeholder="Options separated by comma e.g UZ, MSU, CUT">
+<button class="btn" onclick="addPoll()">Create Poll 🗳️</button></div>
+<div id="pollList" style="margin-top:12px;"></div>
+</div>
+
+<!-- JOBS -->
+<div id="tabJobs" class="hidden">
+<div class="card"><h3>💼 Jobs / Attachments</h3><p style="color:#aaa;font-size:13px;margin:8px 0">Internships, part-time, attachment</p>
+<input id="jTitle" placeholder="Job e.g Shop Assistant, Mutare"><input id="jPay" placeholder="Pay e.g $100/month"><input id="jDesc" placeholder="Details / Contact">
+<button class="btn" onclick="addJob()">Post Job 💼</button></div>
+<div id="jobList" style="margin-top:12px;"></div>
+                                              </div><!-- BLIND DATES -->
+<div id="tabBlind" class="hidden">
+<div class="card"><h3>💘 Blind Dates - Tonight 11pm</h3><p style="color:#aaa;margin:10px 0;font-size:14px;line-height:1.5">Sadza or rice?<br>Sadza. Always. 😂<br><br>Drop your vibe and we match you tonight!</p>
+<textarea id="blindText" rows="2" placeholder="e.g MSU, Male, Funny, loves Sadza..."></textarea>
+<button class="btn" onclick="joinBlind()">Join Blind Dates 💘</button>
+<div id="blindList" style="margin-top:12px;"></div></div>
+</div>
+
+<!-- PRIVATE DM -->
+<div id="tabPrivate" class="hidden">
+<div class="card"><h3>💌 Private Crush DM</h3><p style="color:#aaa;font-size:13px;margin:8px 0">DM by username - no real name shown until BOTH agree to Reveal</p>
+<input id="privateTo" placeholder="Their username e.g @anonymous #12345"><input id="privateMsg" placeholder="Your message...">
+<button class="btn" onclick="sendPrivate()">Send Private DM 💌</button>
+<button class="btn2" style="width:100%;margin-top:10px;" onclick="reveal()">✨ Both Agree to Reveal Names?</button>
+<div id="privateChat" class="chat-box" style="height:200px;margin-top:12px;"><p style="color:#aaa;text-align:center;margin-top:70px;">No private chat yet.<br>Send first DM!</p></div></div>
+</div>
+
+</div>
+<div class="bottom-nav hidden" id="bottomNav">
+<button id="navConfess" class="active" onclick="switchTab('confess')">👻 Confess</button>
+<button id="navChats" onclick="switchTab('chats')">💬 Chats</button>
+<button onclick="switchTab('market')">🛒 Market</button>
+<button onclick="logout()">🚪 Logout</button>
+</div><script>
+let currentUser=null; let currentRoom='General'; let currentFilter='';
+let confessions=JSON.parse(localStorage.getItem('tc_confess')||'[]');
+let chats=JSON.parse(localStorage.getItem('tc_chats')||'{}');
+let market=JSON.parse(localStorage.getItem('tc_market')||'[]');
+let events=JSON.parse(localStorage.getItem('tc_events')||'[]');
+let polls=JSON.parse(localStorage.getItem('tc_polls')||'[]');
+let jobs=JSON.parse(localStorage.getItem('tc_jobs')||'[]');
+let blinds=JSON.parse(localStorage.getItem('tc_blind')||'[]');
+const randomNum=Math.floor(10000+Math.random()*89999);
+document.getElementById('anonTitle').textContent='Create Account-@anonymous #'+randomNum;
+if(confessions.length===0){ confessions=[{name:'@anonymous #29104',school:'UZ',text:'I have a crush on someone in my lecture but I am too shy to talk to them 😭',likes:12,time:'2h ago',comments:['Same! Just go talk to them 😂'],views:890},{name:'Thizza snacs',school:'Founder',text:'Welcome to tertiary-connect_zw 🇿🇼 Post anything, everyone in Zimbabwe will see it! No hiding!',likes:234,time:'2m ago',comments:[],views:1200,pinned:true},{name:'@anonymous #57382',school:'MSU',text:'Exam season is killing me, who else has not started studying? 😂',likes:8,time:'5h ago',comments:[],views:2100}]; saveConfess(); }
+if(market.length===0){ market=[{title:'HP Laptop - Core i5',price:'$180',desc:'Good condition • Mutare Poly • @anonymous #11223'},{title:'Electrical Textbooks',price:'$15',desc:'Year 1 & 2 • Harare Poly • @anonymous #if(events.length===0){ events=[{title:'CUT Gala Night',date:'Sat 15 Nov, 6pm',place:'CUT Hall, Chinhoyi'},{title:'MSU vs CUT Football',date:'Sun 16 Nov, 3pm',place:'MSU Grounds, Gweru'}]; }
+if(polls.length===0){ polls=[{q:'Best campus in Zimbabwe?',opts:['UZ','MSU','CUT','Mutare Poly'],votes:[45,38,22,89]}]; }
+if(jobs.length===0){ jobs=[{title:'Shop Assistant - Mutare',pay:'$100/month',desc:'Weekends only • @anonymous #77889'}]; }
+function saveConfess(){localStorage.setItem('tc_confess',JSON.stringify(confessions));}
+function saveAll(){localStorage.setItem('tc_chats',JSON.stringify(chats));localStorage.setItem('tc_market',JSON.stringify(market));localStorage.setItem('tc_events',JSON.stringify(events));localStorage.setItem('tc_polls',JSON.stringify(polls));localStorage.setItem('tc_jobs',JSON.stringify(jobs));localStorage.setItem('tc_blind',JSON.stringify(blinds));}
+function createAccount(){ const name=document.getElementById('regName').value.trim(); const school=document.getElementById('regSchool').value.trim(); const gender=document.getElementById('regGender').value; if(!name){alert('Please enter Your Name');return;} if(!school){alert('Please enter School');return;} if(!gender){alert('Please Select Gender - REQUIRED');return;} currentUser={username:name,institution:school,gender:gender,anonId:randomNum}; localStorage.setItem('tc_user',JSON.stringify(currentUser)); showMain(); }
+function showMain(){ document.getElementById('registerPage').classList.add('hidden'); document.getElementById('mainPage').classList.remove('hidden'); document.getElementById('bottomNav').classList.remove('hidden'); document.getElementById('myAnon').textContent='@anonymous #'+currentUser.anonId; document.getElementById('mySchoolText').textContent=currentUser.username+' • '+currentUser.institution+' • '+currentUser.gender; renderAll(); }
+function logout(){ if(confirm('Logout?')){ localStorage.removeItem('tc_user'); location.reload(); } }
+function renderAll(){ renderConfess(); renderRooms(); renderMarket(); renderEvents(); renderPolls(); renderJobs(); renderBlind(); }function switchTab(t){ ['confess','chats','market','events','polls','jobs','blind','private'].forEach(x=>{let e=document.getElementById('tab'+x.charAt(0).toUpperCase()+x.slice(1)); if(e)e.classList.add('hidden');}); let s=document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1)); if(s)s.classList.remove('hidden'); document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active')); let m=document.getElementById('m-'+t); if(m)m.classList.add('active'); document.getElementById('navConfess').classList.toggle('active',t==='confess'); document.getElementById('navChats').classList.toggle('active',t==='chats'); }
+function renderConfess(){ let el=document.getElementById('confessList'); if(!el)return; let html=''; confessions.forEach((c,i)=>{ html+='<div class="post"><div class="post-top"><b>'+c.name+'</b><span>'+(c.school||'')+' • '+(c.time||'now')+'</span></div><div class="post-text">'+c.text+'</div><div style="color:#aaa;font-size:12px;margin-top:6px">👁️ '+(c.views||0)+' views</div><div class="post-actions"><button class="like-btn '+(c.liked?'':'gray')+'" onclick="likePost('+i+')">❤️ '+(c.likes||0)+'</button><button class="btn2" onclick="toggleComments('+i+')">💬 '+(c.comments?c.comments.length:0)+'</button><button class="btn2" onclick="sharePost('+i+')">🔁 Share</button></div><div id="cmt-'+i+'" class="comments hidden">'+(c.comments||[]).map(cm=>'<div class="comment">'+cm+'</div>').join('')+'<div class="comment-input"><input id="cmtIn-'+i+'" placeholder="Add comment..."><button onclick="addComment('+i+')">Send</button></div></div></div>'; }); el.innerHTML=html; }
+function postConfession(){ let t=document.getElementById('confessText').value.trim(); if(!t){alert('Type something!');return;} if(!currentUser){alert('Create account first!');return;} confessions.unshift({name:'@anonymous #'+currentUser.anonId,school:currentUser.institution,text:t,likes:0,time:'now',comments:[],views:Math.floor(Math.random()*50)+10}); saveConfess(); document.getElementById('confessText').value=''; renderConfess(); alert('Posted! Everyone can see it! 👻'); }
+function likePost(i){ confessions[i].liked=!confessions[i].liked; confessions[i].likes+=(confessions[i].liked?1:-1); saveConfess(); renderConfess(); }
+function toggleComments(i){ document.getElementById('cmfunction addMarket(){ let t=document.getElementById('mTitle').value.trim(); let p=document.getElementById('mPrice').value.trim(); let d=document.getElementById('mDesc').value.trim(); if(!t||!p){alert('Title + Price needed!');return;} market.unshift({title:t,price:p,desc:d+' • '+(currentUser?'@anonymous #'+currentUser.anonId:'Guest')}); saveAll(); document.getElementById('mTitle').value=''; document.getElementById('mPrice').value=''; document.getElementById('mDesc').value=''; renderMarket(); alert('Posted to Market! 🛒'); }
+function renderMarket(){ let el=document.getElementById('marketList'); if(!el)return; el.innerHTML=market.map(m=>'<div class="item"><b>'+m.title+'</b><p>'+m.desc+'</p><span class="price">'+m.price+'</span></div>').join('')||'<p style="color:#aaa;text-align:center">No items yet</p>'; }
+function addEvent(){ let t=document.getElementById('eTitle').value.trim(); let d=document.getElementById('eDate').value.trim(); let p=document.getElementById('ePlace').value.trim(); if(!t){alert('Event name needed!');return;} events.unshift({title:t,date:d,place:p}); saveAll(); document.getElementById('eTitle').value=''; document.getElementById('eDate').value=''; document.getElementById('ePlace').value=''; renderEvents(); alert('Event Posted! 🎉'); }
+function renderEvents(){ let el=document.getElementById('eventList'); if(!el)return; el.innerHTML=events.map(e=>'<div class="item"><b>🎉 '+e.title+'</b><p>📅 '+e.date+'<br>📍 '+e.place+'</p></div>').join(''); }
+function addPoll(){ let q=document.getElementById('pQ').value.trim(); let o=document.getElementById('pOpt').value.trim(); if(!q||!o){alert('Question + Options needed!');return;} let opts=o.split(',').map(s=>s.trim()); polls.unshift({q:q,opts:opts,votes:opts.map(()=>0)}); saveAll(); document.getElementById('pQ').value=''; document.getElementById('pOpt').value=''; renderPolls(); }
+function renderPolls(){ let el=document.getElementById('pollList'); if(!el)return; el.innerHTML=polls.map((p,pi)=>'<div class="item"><b>'+p.q+'</b>'+p.opts.map((o,oi)=>{let total=p.votes.reduce((a,b)=>a+b,0)||1; let pct=Math.round(p.votes[oi]/total*100); return '<div class="poll-opt" onclick="votePoll('+pi+','+oi+')"><span>'+o+'</span><b>'+pct+'% ('+p.votes[oi]+')</b></div>';}).join('')+'</div>').join(''); }
+function votePoll(pi,oi){ polls[pi].votes[oi]++; saveAll(); renderPolls(); }
+function addJob(){ let t=document.getElementById('jTitle').value.trim(); let p=document.getElementById('jPay').value.trim(); let d=document.getElementById('jDesc').value.trim(); if(!t){alert('Job title needed!');return;} jobs.unshift({title:t,pay:p,desc:d}); saveAll(); document.getElementById('jTitle').value=''; document.getElementById('jPay').value=''; document.getElementById('jDesc').value=''; renderJobs(); alert('Job Posted! 💼'); }
+function renderJobs(){ let el=document.getElementById('jobList'); if(!el)return; el.innerHTML=jobs.map(j=>'<div class="item"><b>💼 '+j.title+'</b><p>'+j.desc+'</p><span class="price">'+j.pay+'</span></div>').join(''); }
+function joinBlind(){ let t=document.getElementById('blindText').value.trim(); if(!t){alert('Write your vibe!');return;} if(!currentUser){alert('Create account first!');return;} blinds.unshift({name:'@anonymous #'+currentUser.anonId,school:currentUser.institution,text:t}); saveAll(); document.getElementById('blindText').value=''; renderBlind(); alert('You joined Blind Dates! Matched tonight 11pm 💘'); }
+function renderBlind(){ let el=document.getElementById('blindfunction joinBlind(){ let t=document.getElementById('blindText').value.trim(); if(!t){alert('Write your vibe!');return;} if(!currentUser){alert('Create account first!');return;} blinds.unshift({name:'@anonymous #'+currentUser.anonId,school:currentUser.institution,text:t}); saveAll(); document.getElementById('blindText').value=''; renderBlind(); alert('You joined Blind Dates! Matched tonight 11pm 💘'); }
+function sendPrivate(){ let to=document.getElementById('privateTo').value.trim(); let msg=document.getElementById('privateMsg').value.trim(); if(!to||!msg){alert('Need username + message!');return;} if(!currentUser){alert('Create account first!');return;} let box=document.getElementById('privateChat'); box.innerHTML+='<div class="msg me"><small>You to '+to+'</small>'+msg+'</div>'; document.getElementById('privateMsg').value=''; alert('DM Sent to '+to+' 💌'); }
+function reveal(){ if(confirm('Both of you agree to reveal real names?')){ alert('Revealed! Your real name is now: '+(currentUser?currentUser.username:'Guest')+' ✨'); } }
+function showCampusStory(campus){ let b=document.getElementById('storyBanner'); b.classList.remove('hidden'); let msgs={ 'Blind Dates':'💘 Blind Dates TONIGHT 11pm! Drop your vibe - Sadza or Rice? Sadza. Always. 😂', 'CUT':'🏫 CUT - Chinhoyi University of Technology. Exams? Parties? Post it!', 'MSU':'🏫 MSU - Midlands State University, Gweru. Biggest campus vibes!', 'NUST':'🏫 NUST - Bulawayo. Tech kings!', 'UZ':'🏫 UZ - University of Zimbabwe, Harare. The OG!', 'Mutare Poly':'🏫 Mutare Poly - HOME! ⭐ Mutare stand up!', 'Harare Poly':'🏫 Harare Poly - Harare!', 'BUSE':'🏫 BUSE - Bindura University of Science Education' }; b.innerHTML='<b>'+campus+'</b><br>'+(msgs[campus]||campus); }
+let saved=localStorage.getItem('tc_user'); if(saved){ currentUser=JSON.parse(saved); showMain(); } else { renderConfess(); renderRooms(); renderMarket(); renderEvents(); renderPolls(); renderJobs(); renderBlind(); }
+function addMarket(){ let t=document.getElementById('mTitle').value.trim(); let p=document.getElementById('mPrice').value.trim(); let d=document.getElementById('mDesc').value.trim(); if(!t||!p){alert('Title + Price needed!');return;} market.unshift({title:t,price:p,desc:d+' • '+(currentUser?'@anonymous #'+currentUser.anonId:'Guest')}); saveAll(); document.getElementById('mTitle').value=''; document.getElementById('mPrice').value=''; document.getElementById('mDesc').value=''; renderMarket(); alert('Posted to Market! 🛒'); }
+function addComment(i){ let inp=document.getElementById('cmtIn-'+i); let v=inp.value.trim(); if(!v)return; if(!confessions[i].comments)confessions[i].comments=[]; confessions[i].comments.push((currentUser?'@anonymous #'+currentUser.anonId:'Guest')+': '+v); saveConfess(); renderConfess(); }
+function sharePost(i){ let txt=confessions[i].text; if(navigator.share){navigator.share({text:txt});} else { navigator.clipboard.writeText(txt); alert('Copied! Share anywhere! 🔁'); } }
+function renderRooms(){ let el=document.getElementById('roomsList'); if(!el)return; let rooms=['General','Mutare Poly','UZ','MSU','CUT','NUST','Harare Poly','BUSE','Blind Dates 💘']; el.innerHTML=rooms.map(r=>'<div class="chat-room" onclick="openRoom(\''+r+'\')"><b>💬 '+r+'</b><span>›</span></div>').join(''); }
+function openRoom(r){ currentRoom=r; document.getElementById('roomsList').classList.add('hidden'); document.getElementById('chatView').classList.remove('hidden'); document.getElementById('roomTitle').textContent='💬 '+r; renderChat(); }
+function backToRooms(){ document.getElementById('roomsList').classList.remove('hidden'); document.getElementById('chatView').classList.add('hidden'); }
+function renderChat(){ let box=document.getElementById('chatBox'); if(!box)return; let msgs=chats[currentRoom]||[]; box.innerHTML=msgs.length?msgs.map(m=>'<div class="msg '+(m.me?'me':'')+'"><small>'+m.name+'</small>'+m.text+'</div>').join(''):'<p style="color:#aaa;text-align:center;margin-top:100px">No messages yet.<br>Say hi! 👋</p>'; box.scrollTop=box.scrollHeight; }
+function sendMsg(){ let inp=document.getElementById('chatInput'); let v=inp.value.trim(); if(!v)return; if(!currentUser){alert('Create account first!');return;} if(!chats[currentRoom])chats[currentRoom]=[]; chats[currentRoom].push({name:'@anonymous #'+currentUser.anonId,text:v,me:true}); saveAll(); inp.value=''; renderChat(); }
+function showRooms(){ document.getElementById('btnRooms').classList.add('active'); document.getElementById('btnMyChat').classList.remove('active'); backToRooms(); }
+function showMyChat(){ document.getElementById('btnMyChat').classList.add('active'); document.getElementById('btnRooms').classList.remove('active'); if(currentUser)openRoom(currentUser.institution); else alert('Create account first!'); }</script>
+</script></body>
+</html>
