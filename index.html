@@ -1,142 +1,56 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tertiary Connect ZW</title>
+<html><head><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>campusconfess</title>
 <style>
-body{background:#F0F2F5;color:#000;font-family:Arial,sans-serif;margin:0;padding-bottom:90px}
-.top{background:#fff;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;box-shadow:0 1px 5px #ccc}
-.logo{font-weight:900;font-size:26px;color:#1877F2}.logo span{color:#000;font-size:13px;display:block}
-.search{background:#F0F2F5;border-radius:999px;padding:8px 14px;color:#65676B;font-size:14px;flex:1;margin:0 10px}
-.topicons{font-size:22px;display:flex;gap:14px}
-.nav{background:#fff;display:flex;justify-content:space-around;padding:10px 0;border-bottom:1px solid #ddd;position:sticky;top:58px;z-index:19}
-.nav span{font-size:24px}
-.nav .active{color:#1877F2;border-bottom:3px solid #1877F2}
-.card{background:#fff;border-radius:10px;padding:12px;margin:10px;box-shadow:0 1px 2px #ccc}
-.avatar{width:40px;height:40px;border-radius:50%;background:#1877F2;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;float:left;margin-right:10px}
-.story{width:70px;height:110px;border-radius:10px;background:#1877F2;color:#fff;display:inline-block;margin-right:8px;text-align:center;padding-top:70px;font-size:12px;font-weight:700}
-.btn{border:none;padding:10px 16px;border-radius:999px;font-weight:900;cursor:pointer}
-.btn-blue{background:#1877F2;color:#fff}
-.btn-grey{background:#E4E6EB;color:#000}
-input,select{width:100%;padding:12px;border-radius:20px;border:none;background:#F0F2F5;margin:6px 0;box-sizing:border-box}
-.likeRow{display:flex;justify-content:space-around;border-top:1px solid #ddd;margin-top:10px;padding-top:8px;color:#65676B;font-weight:700}
-</style></head>
-<body>
-<div class="top"><div class="logo">facebook<span>tertiaryconnect</span></div><div class="search">🔍 Search</div><div class="topicons"><span>🔔</span><span>💬</span></div></div>
-<div class="nav"><span class="active">🏠</span><span>👥</span><span>🎬</span><span>🏪</span><span>🔔</span><span>☰</span></div>
+body{background:#0F0F1A;color:#fff;font-family:Arial;margin:0;padding:14px}
+.card{background:#1A1A2E;padding:16px;border-radius:14px;text-align:center}
+input,select{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid #333;background:#222;color:#fff;box-sizing:border-box}
+.btn{width:100%;padding:12px;border:none;border-radius:999px;font-weight:900;cursor:pointer;background:#A855F7;color:#fff;margin-top:6px}
+.hidden{display:none!important}
+</style></head><body>
 
-<div class="card">
-<div class="avatar">T</div><input id="usernameInput" placeholder="What's on your mind? Type username...">
-<button class="btn btn-blue" onclick="saveUsername()">Save Username</button>
-<p id="usernameSaved" style="color:#1877F2;font-weight:700"></p>
-<div style="display:flex;justify-content:space-around;margin-top:10px;color:#65676B;font-weight:700"><span>🎥 Live video</span><span>🖼️ Photo</span><span>😊 Feeling</span></div>
+<div id="authBox" class="card">
+<h2>campusconfess</h2>
+<p style="color:#aaa">Create Account - Zimbabwe 🇿🇼</p>
+<input id="regName" placeholder="Your Name e.g. Shy Sparrow">
+<input id="regSchool" placeholder="School e.g. Mutare Poly">
+<select id="regGender">
+<option value="">Select Gender * REQUIRED</option>
+<option value="♀️ Female">♀️ Female</option>
+<option value="♂️ Male">♂️ Male</option>
+</select>
+<button class="btn" onclick="createAccount()">Create My Account ✅</button>
 </div>
 
-<div class="card" style="white-space:nowrap;overflow-x:auto">
-<div class="story">+ Your<br>Story</div>
-<div class="story" style="background:#FF4D8D">💘 Blind<br>Date</div>
-<div class="story" style="background:#000">UZ<br>Harare</div>
-<div class="story" style="background:#008000">NUST<br>Bulawayo</div>
-<div class="story" style="background:#FF8C00">MSU<br>Gweru</div>
-</div><div class="card">
-<div class="avatar" style="background:#FF4D8D">💘</div><b>Blind Date - Tertiary Connect</b><br><span style="color:#65676B;font-size:13px">Sponsored • 🌍 • Matched from another school</span><br><br>
-<p>Find love from ANOTHER school. No names until both say YES 💘</p>
-<select><option>I am looking for...</option><option>A Boy</option><option>A Girl</option><option>Friend</option></select>
-<select><option>My School...</option><option>UZ Harare</option><option>NUST Bulawayo</option><option>MSU Gweru</option><option>CUT Chinhoyi</option><option>HIT Harare</option><option>GZU Masvingo</option><option>BUSE Bindura</option><option>Lupane</option><option>Mutare Poly</option><option>Harare Poly</option><option>Bulawayo Poly</option></select>
-<button class="btn btn-blue" style="background:#FF4D8D" onclick="alert('Blind Date request sent! We will match you 💘')">Find My Match</button>
-<div class="likeRow"><span onclick="alert('Liked!')">👍 Like</span><span>💬 Comment</span><span>↗️ Share</span></div>
-</div>
-
-<div class="card">
-<div class="avatar" style="background:#FFD700;color:#000">C</div><b>Chicken Inn Zimbabwe</b><br><span style="color:#65676B;font-size:13px">Sponsored • 🌍</span><br><br>
-<p>🔥 New Double Burger $3.50 - All Branches!</p>
-<div style="background:#FFD700;padding:30px;text-align:center;font-size:40px;border-radius:8px">🍔</div>
-<button class="btn btn-blue" style="background:#FFD700;color:#000;width:100%;margin-top:8px" onclick="alert('Opening Chicken Inn menu...')">Order Now</button>
-<div class="likeRow"><span>👍 Like</span><span>💬 Comment</span><span>↗️ Share</span></div>
-</div>
-
-<div class="card">
-<div class="avatar">U</div><b>@uz_fresh • UZ Harare</b><br><span style="color:#65676B;font-size:13px">2h • 🌍 • Harare</span><br><br>
-<p>Who is going to the UZ party Friday? 🎉</p>
-<div style="background:#000;color:#fff;padding:30px;text-align:center;border-radius:8px">🎥 REEL - Campus Life 😂<br><br><button class="btn btn-blue" onclick="watchReel(this)">▶ Watch Reel</button></div>
-<div class="likeRow"><span onclick="alert('You liked this!')">👍 Like</span><span onclick="alert('Comment box opened!')">💬 Comment</span><span>↗️ Share</span></div>
-</div>
-
-<div class="card">
-<div class="avatar" style="background:#008000">N</div><b>@nust_queen • NUST Bulawayo</b><br><span style="color:#65676B;font-size:13px">4h • 🌍 • Bulawayo</span><br><br>
-<p>Exam week vibes 📚 Who else is stressed?</p>
-<div style="background:#222;color:#fff;padding:30px;text-align:center;border-radius:8px">🎥 REEL - Exam Week<br><br><button class="btn btn-blue" onclick="watchReel(this)">▶ Watch Reel</button></div>
-<div class="likeRow"><span>👍 Like</span><span>💬 Comment</span><span>↗️ Share</span></div>
-</div><div class="card">
-<b>🔔 Notifications</b><br><br>
-<p>💘 Someone from NUST wants to match you!</p>
-<p>❤️ campus_queen liked your post</p>
-<p>💬 New comment on your reel</p>
-<button class="btn btn-blue" onclick="alert('You have 3 new notifications!')">View All Notifications</button>
-</div>
-
-<div class="card">
-<b>🏫 All Places - Choose Your School</b><br><br>
-<button onclick="alert('Showing UZ - Harare!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">UZ Harare</button>
-<button onclick="alert('Showing NUST - Bulawayo!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">NUST Bulawayo</button>
-<button onclick="alert('Showing MSU - Gweru!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">MSU Gweru</button>
-<button onclick="alert('Showing CUT - Chinhoyi!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">CUT Chinhoyi</button>
-<button onclick="alert('Showing HIT - Harare!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">HIT Harare</button>
-<button onclick="alert('Showing GZU - Masvingo!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">GZU Masvingo</button>
-<button onclick="alert('Showing BUSE - Bindura!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">BUSE Bindura</button>
-<button onclick="alert('Showing Lupane!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">Lupane</button>
-<button onclick="alert('Showing Mutare Poly!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">Mutare Poly</button>
-<button onclick="alert('Showing Harare Poly!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">Harare Poly</button>
-<button onclick="alert('Showing Bulawayo Poly!')" style="background:#E4E6EB;border:none;padding:8px 12px;border-radius:999px;margin:3px;font-weight:700">Bulawayo Poly</button>
-<button onclick="alert('Showing ALL Zimbabwe!')" style="background:#1877F2;color:#fff;border:none;padding:8px 14px;border-radius:999px;margin:3px;font-weight:900">ALL 🇿🇼</button>
-</div>
-
-<div class="card">
-<b>✍️ Post Confession</b><br><br>
-<input placeholder="Write your confession...">
-<button class="btn btn-blue" onclick="alert('Confession posted anonymously! ✅')">Post Anonymously</button>
-</div>
-
-<div class="card">
-<b>💬 Public Chat</b><br><br>
-<div id="publicChat" style="background:#F0F2F5;padding:12px;border-radius:12px;height:120px;overflow-y:auto"><p><b>Thizza snacs:</b> Welcome! Say hi 👋</p></div><br>
-<input id="publicMsg" placeholder="Type message...">
-<button class="btn btn-blue" onclick="sendPublic()">Send</button>
-</div>
-
-<div class="card">
-<b>🔒 Private Chat</b><br><br>
-<input id="privateTo" placeholder="Their username">
-<div id="privateChat" style="background:#F0F2F5;padding:12px;border-radius:12px;height:80px;overflow-y:auto"><p style="color:#888;text-align:center">No private chat yet.</p></div><br>
-<input id="privateMsg" placeholder="Secret message...">
-<button class="btn btn-blue" onclick="sendPrivate()">Send 🔒</button>
+<div id="profileBox" class="card hidden">
+<p style="font-size:50px;margin:0">👤</p>
+<h2 id="pName">-</h2>
+<p><span style="color:#22C55E">🟢 Online now</span></p>
+<p id="pLastSeen" style="color:#aaa;font-size:13px">Last seen: Just now</p>
+<p id="pGender"></p>
+<p id="pSchool"></p>
+<button class="btn" style="background:#333" onclick="logout()">Log Out</button>
 </div>
 
 <script>
-let myUsername = localStorage.getItem('tc_username') || 'Anonymous Student';
-if(myUsername!=='Anonymous Student'){document.getElementById('usernameSaved').innerText='Your username: '+myUsername+' ✅'}
-let views = 2340;
-function saveUsername(){
-let v=document.getElementById('usernameInput').value.trim();
-if(!v){alert('Type username first!');return}
-myUsername=v;localStorage.setItem('tc_username',v);
-document.getElementById('usernameSaved').innerText='Your username: '+v+' ✅';
-alert('Welcome '+v+'!');
+let me=JSON.parse(localStorage.getItem('cc_user')||'null');
+function createAccount(){
+let n=document.getElementById('regName').value.trim();
+let s=document.getElementById('regSchool').value.trim();
+let g=document.getElementById('regGender').value;
+if(!n||!s||!g){alert('Fill Name + School + Gender! Gender is required!');return}
+me={name:n,school:s,gender:g,lastSeen:"Just now"};
+localStorage.setItem('cc_user',JSON.stringify(me));
+showProfile();
 }
-function watchReel(btn){views++;btn.innerText='✅ Watched! Views: '+views;}
-function sendPublic(){
-let m=document.getElementById('publicMsg').value.trim();
-if(!m){alert('Type message!');return}
-document.getElementById('publicChat').innerHTML+='<p><b>'+myUsername+':</b> '+m+'</p>';
-document.getElementById('publicMsg').value='';
+function showProfile(){
+document.getElementById('authBox').classList.add('hidden');
+document.getElementById('profileBox').classList.remove('hidden');
+document.getElementById('pName').innerText=me.name;
+document.getElementById('pGender').innerText='Gender: '+me.gender;
+document.getElementById('pSchool').innerText='🏫 '+me.school;
+document.getElementById('pLastSeen').innerText='Last seen: '+me.lastSeen+' • 🟢 Online';
 }
-function sendPrivate(){
-let to=document.getElementById('privateTo').value.trim();
-let m=document.getElementById('privateMsg').value.trim();
-if(!to||!m){alert('Type username + message!');return}
-let box=document.getElementById('privateChat');
-if(box.innerHTML.includes('No private')) box.innerHTML='';
-box.innerHTML+='<p><b>You to '+to+':</b> '+m+'</p>';
-document.getElementById('privateMsg').value='';
-}
-</script>
-</body>
-</html>
+function logout(){localStorage.removeItem('cc_user');location.reload()}
+if(me) showProfile();
+</script></body></html>
