@@ -3,168 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tertiary Connect - Zimbabwe</title>
+<title>Tertiary Connect</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#000;color:#fff;padding-bottom:40px}
-.top{padding:16px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;position:sticky;top:0;background:#000;z-index:10}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;color:#fff;padding-bottom:60px}
+.top{position:sticky;top:0;background:#111;padding:10px 4%;border-bottom:1px solid #222}
 .logo{font-size:22px;font-weight:900;color:#1DB954}
 .logo span{color:#fff}
-.badge{background:#1DB954;color:#000;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800}
-.hero{padding:24px 6%}
-.hero h1{font-size:32px;line-height:1.1}
-.hero h1 span{color:#1DB954}
-.hero p{color:#aaa;margin-top:10px;line-height:1.5}
-.btn{width:100%;padding:16px;border:none;border-radius:14px;font-weight:900;font-size:16px;cursor:pointer;margin-top:12px}
+.search{background:#222;border-radius:999px;padding:8px 14px;color:#aaa;font-size:13px;flex:1;margin:0 10px}
+.card{margin:12px 4%;background:#111;border:1px solid #222;border-radius:14px;padding:14px}
+input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #333;background:#000;color:#fff;margin-bottom:10px}
+.btn{width:100%;padding:14px;border:none;border-radius:12px;font-weight:900}
 .btn-green{background:#1DB954;color:#000}
-.btn-dark{background:#111;color:#fff;border:1px solid #333}
-.card{margin:16px 6%;background:#111;border:1px solid #222;border-radius:18px;padding:20px}
-.chip{display:inline-block;background:#000;border:1px solid #1DB954;padding:8px 14px;border-radius:999px;margin:4px;font-size:14px}
-input,select,textarea{width:100%;padding:13px;border-radius:12px;border:1px solid #333;background:#000;color:#fff;margin-bottom:10px;font-size:15px}
-.post{margin:14px 6%;background:#111;border:1px solid #222;border-radius:18px;padding:16px}
-.post b{color:#1DB954}
-.like-btn{background:#222;color:#fff;border:none;padding:8px 16px;border-radius:999px;margin-top:10px;cursor:pointer}
+.post{margin:12px 4%;background:#111;border:1px solid #222;border-radius:14px;padding:14px}
 .hidden{display:none}
 </style>
 </head>
 <body>
 <div class="top">
+<div style="display:flex;align-items:center">
 <div class="logo">tertiary<span>connect</span></div>
-<div class="badge">ZIMBABWE 🇿🇼</div>
+<div class="search">🔍 Search...</div>
 </div>
-<div class="hero">
-<h1>Connect. <span>Confess.</span><br>Find Your People.</h1>
-<p>BUILT FOR ALL ZIMBABWE • No real names, no numbers shown. Just your username.</p>
-<p style="color:#1DB954;font-weight:800;margin-top:8px">🔥 12 people got a blind date last night</p>
-<button class="btn btn-green" onclick="showConfess()">+ Confess Anonymously</button>
-<button class="btn btn-dark" onclick="showBlindDate()">💘 Find Blind Date</button>
+<div style="display:flex;gap:6px;margin-top:10px;text-align:center">
+<div style="flex:1;background:#1DB954;color:#000;padding:10px;border-radius:10px">🏠</div>
+<div style="flex:1;padding:10px">💘</div>
+<div style="flex:1;padding:10px">🔔</div>
+<div style="flex:1;padding:10px">💬</div>
+<div style="flex:1;padding:10px">👤</div>
 </div>
-<div class="card" style="border:1px solid #1DB954">
-<b style="font-size:18px">👤 Create Your Username</b><br>
-<span style="color:#888">This is your secret identity. Nobody sees your real name.</span><br><br>
-<input id="usernameInput" placeholder="e.g. thizza_queen, mutare_boy">
-<button class="btn btn-green" style="margin:0" onclick="saveUsername()">Save My Username</button>
-<p id="usernameSaved" style="color:#1DB954;margin-top:10px;font-weight:800"></p>
-</div><div id="confessBox" class="card hidden">
-<b>✍️ Write Confession</b><br><br>
-<textarea id="confessText" rows="3" placeholder="Write your confession..."></textarea>
-<select id="confessTag"><option>#General</option><option>#Crush</option><option>#CampusLife</option><option>#Hustle</option><option>#Relationship</option></select>
-<button class="btn btn-green" style="margin:0" onclick="postConfess()">Post Anonymously</button>
-</div>
-
-<div id="blindBox" class="card hidden" style="border-color:#FF4D8D">
-<b>💘 Blind Date</b><br>
-<span style="color:#888">We match you with someone from another school.</span><br><br>
-<select><option>I am looking for...</option><option>A Boy</option><option>A Girl</option><option>Anyone / Friend</option></select>
-<select><option>My School...</option><option>UZ</option><option>NUST</option><option>MSU</option><option>CUT</option><option>HIT</option><option>GZU</option><option>BUSE</option><option>ZOU</option><option>Polytechnic</option><option>Teachers College</option><option>Nursing School</option></select>
-<button class="btn btn-green" style="margin:0;background:#FF4D8D;color:#fff" onclick="alert('Blind Date request sent! We will match you soon 💘')">Find My Match</button>
+</div><div class="card">
+<b>👤 Create Your Username</b><br><br>
+<input id="usernameInput" placeholder="e.g. thizza_queen">
+<button class="btn btn-green" onclick="saveUsername()">Save My Username</button>
+<p id="usernameSaved" style="color:#1DB954;margin-top:8px"></p>
 </div>
 
 <div class="card">
-<div style="display:flex;gap:14px;align-items:center">
-<div style="width:60px;height:60px;background:#FFD700;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#000">T</div>
-<div><b style="font-size:19px">⚡ Thizza snacs</b> <span style="background:#1DB954;color:#000;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800">FOUNDER</span><br><span style="color:#aaa;font-size:14px">Founder of Tertiary Connect. Building a safe place for all students in Zimbabwe.</span></div>
-</div>
-</div>
-
-<div class="card">
-<b>How Tertiary Connect works</b><br><br>
-<p>1️⃣ <b>Create username</b> - No real name needed</p>
-<p style="margin-top:8px">2️⃣ <b>Post confession</b> - Anonymous, safe</p>
-<p style="margin-top:8px">3️⃣ <b>Find blind date</b> - Matched from another school</p>
-<p style="margin-top:8px">4️⃣ <b>Chat anonymously</b> - Public + Private</p>
-<p style="margin-top:8px">5️⃣ <b>Meet your people</b> - Same school, same vibe</p>
+<b>🎬 Reels - Watch & Earn 💰</b><br>
+<span style="color:#888;font-size:13px">Watch = Thizza earns from sponsors!</span><br><br>
+<button class="btn btn-green" onclick="alert('Upload coming! Send video to Thizza')">+ Upload Reel</button>
 </div>
 
-<div class="card">
-<b>🎓 People's Schools</b><br><span style="color:#888">Pick your school - find your people</span><br><br>
-<span class="chip">UZ</span><span class="chip">NUST</span><span class="chip">MSU</span><span class="chip">CUT</span><span class="chip">HIT</span><span class="chip">GZU</span><span class="chip">BUSE</span><span class="chip">ZOU</span><span class="chip">Polytechnics</span><span class="chip">Teachers Colleges</span><span class="chip">Nursing Schools</span>
+<div class="post">
+<b>mutare_queen</b> <span style="color:#888">• 1,240 views</span>
+<div style="background:#FF4D8D;height:200px;border-radius:12px;margin-top:10px;display:flex;align-items:center;justify-content:center;font-size:40px">🎬</div>
+<p style="margin-top:10px">Mutare Campus Vibes 🔥</p>
+<button onclick="watchReel(this)" style="background:#fff;color:#000;border:none;padding:10px 20px;border-radius:999px;font-weight:900">▶️ Play Reel</button>
 </div>
 
-<div class="card" style="border:2px solid #1DB954">
-<b style="font-size:19px">💬 Anonymous Public Chat</b><br><span style="color:#888">Everyone chats here with username only.</span><br><br>
-<div id="publicChat" style="background:#000;border:1px solid #333;border-radius:12px;padding:12px;height:200px;overflow-y:auto;font-size:14px">
-<p><b style="color:#FFD700">Thizza snacs:</b> Welcome to public chat! Say hi 👋</p>
-<p><b style="color:#1DB954">mutare_queen:</b> Anyone from Mutare here?</p>
+<div class="post" style="border:2px solid #FFD700">
+<b>SPONSORED • Chicken Inn Mutare 💰</b><br>
+<span style="color:#FFD700;font-size:12px">PAID AD • 2,340 views • You earned $12.50</span>
+<div style="background:#FFD700;height:200px;border-radius:12px;margin-top:10px;display:flex;align-items:center;justify-content:center;font-size:40px;color:#000">🍔</div>
+<p style="margin-top:10px">2 Pizzas for $5 - TODAY ONLY!</p>
+<button onclick="watchReel(this)" style="background:#FFD700;color:#000;border:none;padding:10px 20px;border-radius:999px;font-weight:900">▶️ Watch Ad</button>
+</div><div class="card">
+<b>💬 Public Chat</b><br><br>
+<div id="publicChat" style="background:#000;padding:12px;border-radius:12px;height:120px;overflow-y:auto">
+<p><b style="color:#FFD700">Thizza snacs:</b> Welcome! Say hi 👋</p>
 </div><br>
-<div style="display:flex;gap:8px">
-<input id="publicMsg" placeholder="Type message..." style="margin:0">
-<button onclick="sendPublic()" style="background:#1DB954;color:#000;border:none;padding:13px 18px;border-radius:12px;font-weight:900">Send</button>
-</div>
-<p id="roomName" style="color:#1DB954;font-size:13px;margin-top:8px">Room: #General</p>
+<input id="publicMsg" placeholder="Type message...">
+<button class="btn btn-green" onclick="sendPublic()">Send</button>
 </div>
 
-<div class="card" style="border:2px solid #FF4D8D">
-<b style="font-size:19px">🔒 Private Anonymous Chat</b><br><span style="color:#888">For blind dates only. No names until you both say YES.</span><br><br>
-<input id="privateTo" placeholder="Who do you want to chat with? Type their username">
-<div id="privateChat" style="background:#000;border:1px solid #333;border-radius:12px;padding:12px;height:160px;overflow-y:auto;font-size:14px"><p style="color:#888;text-align:center">No private chat yet.<br>Type a username above to start.</p></div><br>
-<div style="display:flex;gap:8px">
-<input id="privateMsg" placeholder="Secret message..." style="margin:0">
-<button onclick="sendPrivate()" style="background:#FF4D8D;color:#fff;border:none;padding:13px 18px;border-radius:12px;font-weight:900">Send 🔒</button>
-</div>
-<button onclick="reveal()" style="width:100%;margin-top:10px;padding:12px;background:#FFD700;color:#000;border:none;border-radius:12px;font-weight:900">✨ Both Agree to Reveal Names</button>
+<div class="card">
+<b>🔒 Private Chat</b><br><br>
+<input id="privateTo" placeholder="Their username">
+<div id="privateChat" style="background:#000;padding:12px;border-radius:12px;height:80px;overflow-y:auto">
+<p style="color:#888;text-align:center">No private chat yet.</p>
+</div><br>
+<input id="privateMsg" placeholder="Secret message...">
+<button class="btn btn-green" onclick="sendPrivate()">Send 🔒</button>
 </div>
 
 <div id="feed"></div>
-<div class="card" style="text-align:center;color:#888"><b style="color:#fff">TERTIARY CONNECT</b><br>Built for all Zimbabwe 🇿🇼<br>By Thizza snacs</div><script>
+
+<script>
 let myUsername = localStorage.getItem('tc_username') || 'Anonymous Student';
 if(myUsername!=='Anonymous Student'){document.getElementById('usernameSaved').innerText='Your username: '+myUsername+' ✅'}
-let posts=[
- {user:'Anonymous Student #77821',tag:'#General',text:'Just found out my crush is in my class. What do I do? 😭',likes:24},
- {user:'Thizza snacs',tag:'#General',text:'Welcome to Tertiary Connect. I am Thizza snacs. Create your username, post your confession, find your people. No real names, no numbers shown. Lets build this together. 🇿🇼',likes:234,pinned:true},
- {user:'mutare_queen',tag:'#Crush',text:'To the guy who always sits at the back in the library... I see you 👀',likes:18}
-];
-function render(){
- let h='';
- posts.forEach((p,i)=>{
-  h+=`<div class="post" style="${p.pinned?'border:2px solid #FFD700':''}"><b>${p.user} ${p.pinned?'<span style="background:#FFD700;color:#000;padding:2px 8px;border-radius:999px;font-size:11px">PINNED • FOUNDER</span>':''}</b> <span style="color:#1DB954">${p.tag}</span><p style="margin:10px 0">${p.text}</p><button class="like-btn" onclick="like(${i},this)">❤️ ${p.likes}</button></div>`
- });
- document.getElementById('feed').innerHTML=h;
-}
-function like(i,btn){posts[i].likes++;btn.innerText='❤️ '+posts[i].likes}
+let views = 2340;
+let earnings = 12.50;
 function saveUsername(){
- let v=document.getElementById('usernameInput').value.trim();
- if(!v){alert('Type your username first!');return}
- myUsername=v;localStorage.setItem('tc_username',v);
- document.getElementById('usernameSaved').innerText='Your username: '+v+' ✅ Saved!';
- alert('Welcome '+v+'! Your username is saved.');
+let v=document.getElementById('usernameInput').value.trim();
+if(!v){alert('Type username first!');return}
+myUsername=v;localStorage.setItem('tc_username',v);
+document.getElementById('usernameSaved').innerText='Your username: '+v+' ✅';
+alert('Welcome '+v+'!');
 }
-function showConfess(){document.getElementById('confessBox').classList.toggle('hidden')}
-function showBlindDate(){document.getElementById('blindBox').classList.toggle('hidden')}
+function watchReel(btn){
+views++; earnings = earnings + 0.005;
+btn.innerText='✅ Watched! Views: '+views;
+alert('Thanks for watching! Total views: '+views+' | Thizza earned: $'+earnings.toFixed(2)+' 💰');
+}
 function sendPublic(){
- let m=document.getElementById('publicMsg').value.trim();
- if(!m){alert('Type a message!');return}
- let box=document.getElementById('publicChat');
- box.innerHTML+=`<p><b style="color:#1DB954">${myUsername}:</b> ${m}</p>`;
- document.getElementById('publicMsg').value='';
- box.scrollTop=box.scrollHeight;
+let m=document.getElementById('publicMsg').value.trim();
+if(!m){alert('Type message!');return}
+document.getElementById('publicChat').innerHTML+='<p><b style="color:#1DB954">'+myUsername+':</b> '+m+'</p>';
+document.getElementById('publicMsg').value='';
 }
 function sendPrivate(){
- let to=document.getElementById('privateTo').value.trim();
- let m=document.getElementById('privateMsg').value.trim();
- if(!to){alert('Type their username first!');return}
- if(!m){alert('Type a message!');return}
- let box=document.getElementById('privateChat');
- if(box.innerHTML.includes('No private chat')) box.innerHTML='';
- box.innerHTML+=`<p><b style="color:#1DB954">You to ${to}:</b> ${m}</p><p style="color:#888;font-size:12px">Waiting for ${to} to reply...</p>`;
- document.getElementById('privateMsg').value='';
- box.scrollTop=box.scrollHeight;
+let to=document.getElementById('privateTo').value.trim();
+let m=document.getElementById('privateMsg').value.trim();
+if(!to||!m){alert('Type username + message!');return}
+let box=document.getElementById('privateChat');
+if(box.innerHTML.includes('No private')) box.innerHTML='';
+box.innerHTML+='<p><b>You to '+to+':</b> '+m+'</p>';
+document.getElementById('privateMsg').value='';
 }
-function reveal(){
- if(confirm('Do you both agree to reveal your real names?')){
-  alert('You both agreed! Now you can share WhatsApp / Instagram ✨');
- }
-}
-function postConfess(){
- let t=document.getElementById('confessText').value.trim();
- if(!t){alert('Write something first!');return}
- let tag=document.getElementById('confessTag').value;
- posts.unshift({user:myUsername,tag:tag,text:t,likes:0});
- document.getElementById('confessText').value='';
- document.getElementById('confessBox').classList.add('hidden');
- render();alert('Posted! 🔥');
-}
-render();
 </script>
 </body>
 </html>
