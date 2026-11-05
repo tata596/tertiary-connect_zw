@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+8<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -209,5 +209,21 @@ function renderChat(){ let box=document.getElementById('chatBox'); if(!box)retur
 function sendMsg(){ let inp=document.getElementById('chatInput'); let v=inp.value.trim(); if(!v)return; if(!currentUser){alert('Create account first!');return;} if(!chats[currentRoom])chats[currentRoom]=[]; chats[currentRoom].push({name:'@anonymous #'+currentUser.anonId,text:v,me:true}); saveAll(); inp.value=''; renderChat(); }
 function showRooms(){ document.getElementById('btnRooms').classList.add('active'); document.getElementById('btnMyChat').classList.remove('active'); backToRooms(); }
 function showMyChat(){ document.getElementById('btnMyChat').classList.add('active'); document.getElementById('btnRooms').classList.remove('active'); if(currentUser)openRoom(currentUser.institution); else alert('Create account first!'); }</script>
-</script></body>
+// FIX CREATE ACCOUNT BUTTON
+document.addEventListener('DOMContentLoaded', function(){
+  var btns = document.querySelectorAll('button');
+  btns.forEach(function(b){
+    if(b.textContent.includes('Create My Account')){
+      b.onclick = function(){
+        var inputs = document.querySelectorAll('input');
+        var name = inputs[0] ? inputs[0].value : 'Tata';
+        var school = inputs[1] ? inputs[1].value : 'Msu';
+        localStorage.setItem('tc_user', JSON.stringify({name:name, school:school}));
+        localStorage.setItem('tc_logged', 'yes');
+        alert('Welcome ' + name + '! 🎉');
+        location.reload();
+      };
+    }
+  });
+});</script></body>
 </html>
